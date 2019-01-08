@@ -18,46 +18,16 @@ const sampleClient = {
 
 describe('Clients', () => {
 
-    // it('Should return all clients at GET: /clients', (done) => {
-    //     agent
-    //     .get('/clients')
-    //     .end((err, res) => {
-    //         res.should.be.html;
-    //         res.status.should.be.equal(200);
-    //         expect(res.body).to.contain('clients');
-    //         done();
-    //     })
-    // });
     it('Should return all clients at GET: /clients', (done) => {
-        Client.findOneAndRemove(sampleClient)
-        .then(() => {
-            Client.find({})
-            .then(clients => {
-                const clientCount = clients.length || 0;
-                const newClient = new Client(sampleClient);
-                newClient.save()
-                .then(() => {
-
-                }).catch(err => {
-                    console.log(err)
-                })
-                
-                agent
-                .get('/clients')
-                .then((res) => {
-                    const body = res.body;
-                    res.length.should.be.equal(clientCount + 1);
-                    res.should.be.html;
-                    res.status.should.be.equal(200);
-                    return done(); 
-                })
-                .catch(err => done(err))
-            })
-            .catch(err => done(err))
+        agent
+        .get('/clients')
+        .end((err, res) => {
+            res.should.be.html;
+            res.status.should.be.equal(200);
+            return done();
         })
-        .catch(err => done(err))
     });
-
+    
     it('Should create a new client with correct credentials at POST: /clients', (done) => {
         Client.findOneAndRemove(sampleClient)
         .then(() => {
@@ -85,10 +55,12 @@ describe('Clients', () => {
         .catch(err => done(err))
     });
 
-    it('Should delete client and remove from database at DELETE: /clients/:id', (done) => {
+
+    it('Should remove Client from database at DELETE: /clients/:id', (done) => {
         const newClient = new Client(sampleClient);
         newClient.save()
         .then(() => {
+            console.log('Before the 1st find*')
             Client.find({})
             .then(clients => {
                 const clientCount = clients.length || 0;
@@ -96,11 +68,10 @@ describe('Clients', () => {
                 agent
                 .delete(`/clients/${newClient._id}`)
                 .then((res) => {
+                    console.log('Before the 2nd find**')
                     Client.find({})
                     .then((updatedClients) => {
-                        clientCount.should.be.equal(updatedClients + 1);
-                        res.status.should.be(200);
-                        res.should.be.html;
+                        clientCount.should.be.equal(updatedClients.length + 1);
                         return done();
                     })
                     .catch(err => done(err))
@@ -110,6 +81,22 @@ describe('Clients', () => {
             .catch(err => done(err))
         })
         .catch(err => done(err));
+    });
+
+    it('Should render an html page and have status 200 at DELETE: /clients/:id', (done) => {
+        const client = new Client(sampleClient);
+        client.save()
+        .then((client) => {
+            agent
+            .delete(`/clients/${client._id}`)
+            .end((err, res) => {
+                res.status.should.be.equal(200);
+                res.should.be.html;
+                return done();
+            })
+        })
+        .catch(err => done(err))
+        
     });
     
 })
