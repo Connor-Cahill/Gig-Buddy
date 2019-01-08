@@ -39,7 +39,7 @@ module.exports = function(app) {
 
     // DELETE: removes a client
     app.delete('/clients/:id', wrap(async (req, res) => {
-        const client = await Client.findOneAndRemove({ _id: req.params.id }).exec();
+        await Client.findOneAndRemove({ _id: req.params.id }).exec();
         await res.redirect('/');
     }))
 

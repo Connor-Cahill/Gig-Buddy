@@ -1,11 +1,26 @@
-<h1>clients</h1>
+{{> hero-section }}
 
-<div class="clients-container">
-    {{#each clients}}
-        <h2>{{ this.name }}</h2>
-        <p>{{ this.name }}</p>
-        <a href="/clients/{{ this._id }}">go to</a>
-    {{/each}}
+
+<div class="clients-index-container">
+    <div class="btn-flex">
+        <a href="/clients/new">make new</a>
+    </div>
+        <div class="clients-container">
+            {{#each clients}}
+            <div class="client-card">
+                <h2>{{ this.name }}</h2>
+                <p class="client-services-header">Services:</p>
+                <ul class="client-service-list">
+                    <li>some service</li>
+                    <li>some service</li>
+                    <li>some service</li>
+                </ul>
+                <a href="/clients/{{ this._id }}">go to</a>
+                <p class="client-total-billed">Total Billed: $##</p>
+            </div>
+        {{/each}}
+        </div>
+        
+    
 </div>
 
-<a href="/clients/new">make new</a>

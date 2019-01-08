@@ -17,7 +17,15 @@ app.use(methodOverride('_method'));
 
 //  Setup handlebars view engine
 app.use(express.static('public'))
-app.engine('hbs', exphbs({defaultLayout: 'main.hbs'}));
+app.engine('hbs', exphbs({
+    extname: 'hbs', 
+    defaultLayout: 'main', 
+    layoutsDir: __dirname + '/views/layouts',
+    partialsDir  : [
+        //  path to your partials -- partials wouldn't render without this 
+        __dirname + '/views/partials',
+    ]
+}));
 app.set('view engine', 'hbs');
 
 // Database Connections
