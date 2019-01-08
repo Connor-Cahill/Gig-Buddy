@@ -22,5 +22,13 @@ app.set('view engine', 'hbs');
 
 // Database Connections
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/unemployed', { useNewUrlParser: true });
-mongoose.connection.on('error', console.error.bind(console, 'MongoDB connection error'))
+mongoose.connection.on('error', console.error.bind(console, 'MongoDB connection error'));
 mongoose.Promise = global.Promise;
+
+//  Setup Controllers 
+require('./controllers/index')(app);
+require('./controllers/clients')(app);
+
+
+
+app.listen(3000, () => console.log('App runnin on 3000'));

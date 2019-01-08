@@ -1,0 +1,11 @@
+<h1>clients</h1>
+
+<div class="clients-container">
+    {{#each clients}}
+        <h2>{{ this.name }}</h2>
+        <p>{{ this.name }}</p>
+        <a href="/clients/{{ this._id }}">go to</a>
+    {{/each}}
+</div>
+
+<a href="/clients/new">make new</a>
