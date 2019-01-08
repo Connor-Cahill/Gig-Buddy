@@ -1,7 +1,12 @@
 <div class="hero-section">
         <div class="pay-btn-section">
-            <p class="paid-hero-header">Get Paid, Send Payment Requests</p>
-            <button class="pay-request-btn">Send Requests</button>
+            <h2 class="paid-hero-header">Get Paid, Send Payment Requests</h2>
+            <select class="client-selector">
+                {{#each clients}}
+                <option value="{{ this.email }}">{{ this.name }}</option>
+                {{/each}}
+            </select>
+            <button class="pay-request-btn">Send Request</button>
         </div>
         <div class="image-name-section">
             <img src="/assets/DefaultProPic.png" alt="profile picture" class="profile-pic">
@@ -9,9 +14,8 @@
             <p class="hero-client-count">Client Count: ##</p>
         </div>
         <div class="service-snippets">
-            <p class="service-snippet-header">You Currently ## Services Open Right Now:</p>
+            <h2 class="service-snippet-header">You Currently ## Services Open Right Now:</h2>
             <p class="service-snippet-small">## monthly repeating</p>
             <p class="service-snippet-small">## one time services</p>
         </div>
     </div>
-    <div class="bottom-divider"></div>
