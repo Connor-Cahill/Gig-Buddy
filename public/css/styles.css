@@ -1,5 +1,6 @@
 body {
-    background-color: #54ad20;
+    background-color: #FBFFF9;
+    font-size: 16px;
     margin-top: 0;
     padding-top: 0;
     margin: 0px;
@@ -10,6 +11,9 @@ h1, h2, h3 {
     font-family: 'Lato', sans-serif;
 }
 
+p {
+    color: #292f33;
+}
 
 
 
@@ -44,13 +48,13 @@ Top Nav Styling:
     padding-top: 8px;
     text-decoration: none;
     margin-right: 8px;
-    color: #54ad20;
+    color: #4caf50;
     font-weight: bold;
     transition: all 300ms;
 }
 
 .auth-btn:hover {
-    background-color: #54ad20;
+    background-color: #4caf50;
     color: #FBFFF9;
     cursor: pointer;
 
@@ -65,29 +69,34 @@ Hero Section Partial Styling:
 **************/
 
 .hero-section {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    background-image: 
-        linear-gradient(
-            rgba(0, 0, 0, 0.6),
-            rgba(0, 0, 0, 0.6)
-            ),
-        url('/assets/DeskBackground.JPG');
-    background-repeat: no-repeat;
-    background-size: cover;
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-areas: 
+    'a a b b c c'
+    'a a b b c c'
+    'a a b b c c'
+    'a a b b c c'
+    'a a b b c c'
+    'a a b b c c';
+    background-color: #4caf50;
     height: 320px;
     width: 100%;
     align-items: cover;
     color: #FBFFF9;
-    box-shadow: 0px 3px 6px 1px rgba(0,0,0,0.75);
+    margin-bottom: 16px;
 }
+
+.a { grid-area: a; }
+.b { grid-area: b; }
+.c { grid-area: c; }
 
 .pay-btn-section {
     display: flex;
     flex-direction: column;
     margin-top: 32px;
     margin-left: 48px;
+    width: 60%;
 }
 
 .client-selector {
@@ -102,8 +111,8 @@ Hero Section Partial Styling:
     align-self: flex-end;
     font-size: .75em;
     font-family: 'Lato', sans-serif;
-    color: #54ad20;
-    border: solid #54ad20;
+    color: #FBFFF9;
+    border: solid #FBFFF9;
     background: none;
     transition: all 300ms;
 
@@ -111,8 +120,8 @@ Hero Section Partial Styling:
 
 .pay-request-btn:hover {
     cursor: pointer;
-    background-color: #54ad20;
-    color: white;
+    background-color: #FBFFF9;
+    color: #4caf50;
 
 }
 
@@ -163,7 +172,11 @@ Clients Index Styling:
     flex-direction: column;
     overflow-y: scroll;
     height: 720px;
-    background-color: #f9ac6d;
+    background-color: #FBFFF9;
+}
+
+.main-nav-container {
+    margin-top:
 }
 
 .btn-flex {
@@ -174,9 +187,9 @@ Clients Index Styling:
 
 .new-client-btn {
     text-decoration: none;
-    border: solid #276900;
-    color: #FBFFF9;
-    background-color: #54ad20;
+    border: solid #4caf50;
+    color: #4caf50;
+    background-color: none;
     font-size: .9em;
     padding: 4px;
     transition: all 300ms;
@@ -184,7 +197,8 @@ Clients Index Styling:
 
 .new-client-btn:hover {
     cursor: pointer;
-    opacity: .7;
+    background-color: #4caf50;
+    color: #FBFFF9;
 }
 
 .new-client-btn::after {
@@ -236,11 +250,12 @@ Main Nav Partial Styling:
     display: flex;
     flex-direction: row;
     justify-content: center;
+    
 }
 
 .main-nav-btn {
     text-decoration: none;
-    border: solid #54ad20;
+    border: solid #4caf50;
     border-top: none;
     text-align: center;
     padding: 4px;
@@ -250,27 +265,70 @@ Main Nav Partial Styling:
     width: 80px;
     font-size: 1em;
     margin-top: -16px;
-    color: #54ad20;
+    color: #4caf50;
     font-weight: bold;
     margin-right: -3px;
-    background-color: rgba(34, 34, 34, 0.6);
     transition: all 500ms;
 }
 
 .main-nav-btn:hover {
     cursor: pointer;
     color: #FBFFF9;
-    background-color: #54ad20;
+    background-color: #4caf50;
     
 }
 
 .selected {
     color: #FBFFF9;
-    background-color: #54ad20;
+    background-color: #4caf50;
 }
 
 
 .main-nav-btn::after {
     text-decoration: none;
     color: inherit;
+}
+
+
+/**********
+Clients Show Styling:
+*******************/
+
+.clients-show-container {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 64px;
+    width: 75%;
+
+}
+
+.client-show-name {
+    font-size: 4em;
+    color: #981D1A;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+
+.client-show-description {
+    margin-top: 4px;
+    font-size: 1.1em;
+}
+
+.show-services-header {
+    color: #981D1A;
+    font-size: 2.2em;
+    margin-right: 16px;
+    margin-bottom: 0px;
+}
+
+.row-flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.divider {
+    border-bottom: solid #292f33;
 }

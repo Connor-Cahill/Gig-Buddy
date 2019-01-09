@@ -1,9 +1,32 @@
 
 
 
-<h1>{{ client.name }}</h1>
-<p>{{ client.description }}</p>
+{{> hero-section }}
+<div class="main-nav-container">
+    {{> mainNav }}
+</div>
 
+<div class="clients-show-container">
+    <h2 class="client-show-name">{{ client.name }}</h2>
+    <p class="client-show-description">{{ client.description }}</p>
+    
+    <div class="show-services-container">
+        <h3 class="show-services-header">Services:</h3>
+        <div class="services-table">
+            <div class="row-flex">
+                <p class="service-table-name">Service Name</p>
+                <p class="service-table-price">Service Price: $##</p>
+                <p class="service-table-reoccuring">Reoccuring Payments: Yes</p>
+            </div>
+            <div class="divider"></div>
+            <div class="row-flex">
+                <p class="service-table-name">Service Name</p>
+                <p class="service-table-price">Service Price: $##</p>
+                <p class="service-table-reoccuring">Reoccuring Payments: Yes</p>
+            </div>
+            <div class="divider"></div>
+            
+        </div>
+    </div>
+</div>
 
-
-<a href="/clients">go back </a>
