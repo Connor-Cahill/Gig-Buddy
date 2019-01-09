@@ -1,0 +1,30 @@
+{{> hero-section }}
+<div class="main-nav-container">
+    {{> mainNav }}
+</div>
+
+<div class="clients-index-container">
+    {{#if services}}
+        <div class="service-index-table">
+            {{#each services}}
+            <div class="row-flex">
+                <p class="service-table-name"><b>{{ this.name }}</b></p>
+                <p class="service-table-price"><b>Service Price:</b>  {{ this.pricing }}</p>
+                {{#if this.reoccuring}}
+                <p class="service-table-reoccuring"><b>Reoccuring Payments:</b> Yes</p>
+                {{else}}
+                <p class="service-table-reoccuring"><b>Reoccuring Payments:</b> No</p>
+                {{/if}}
+            </div>
+            <div class="divider"></div>
+            {{/each}}
+        </div>
+        {{else}}
+        <div class="no-service-div">
+            <p class="no-services-warning">You don't have any services setup!</p>
+            <p class="no-service-byline">Lets set some up now...</p>
+            {{> service-form}}
+        </div>
+        {{/if}}
+</div>
+

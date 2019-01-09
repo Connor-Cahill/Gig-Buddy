@@ -29,16 +29,16 @@ app.engine('hbs', exphbs({
 app.set('view engine', 'hbs');
 
 // Database Connections
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/unemployed', { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/gig-buddy', { useNewUrlParser: true });
 mongoose.connection.on('error', console.error.bind(console, 'MongoDB connection error'));
 mongoose.Promise = global.Promise;
 
 //  Setup Controllers 
 require('./controllers/index')(app);
 require('./controllers/clients')(app);
+require('./controllers/services')(app);
 
-
-
+//  App running locally on localhost:3000
 app.listen(3000, () => console.log('App runnin on 3000'));
 
 

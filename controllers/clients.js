@@ -6,7 +6,7 @@ module.exports = function(app) {
     // // GET: returns list of all clients
     app.get('/clients', wrap( async (req, res) => {
         const clients = await Client.find({}).exec();
-        await res.render('clients-index', { clients });
+        res.render('clients-index', { clients });
     }));
 
     //  GET: renders the clients form 
@@ -17,7 +17,7 @@ module.exports = function(app) {
     //  GET: returns single client given the ID 
     app.get('/clients/:id', wrap( async (req, res) => {
         const client = await Client.findOne({ _id: req.params.id }).exec();
-        await res.render('clients-show', { client });
+        res.render('clients-show', { client });
     }))
 
     
@@ -25,7 +25,7 @@ module.exports = function(app) {
     app.post('/clients', wrap( async (req, res) => {
         const client = new Client(req.body);
         await client.save();
-        await res.redirect(`/clients/${client._id}`);
+        res.redirect(`/clients/${client._id}`);
     }));
 
 
@@ -34,13 +34,13 @@ module.exports = function(app) {
         const client = await Client.findOne({ _id: req.params.id }).exec();
         client.set(req.body);
         await client.save();
-        await res.redirect(`/clients/${client._id}`);
+        res.redirect(`/clients/${client._id}`);
     }));
 
     // DELETE: removes a client
     app.delete('/clients/:id', wrap(async (req, res) => {
         await Client.findOneAndRemove({ _id: req.params.id }).exec();
-        await res.redirect('/');
+        res.redirect('/');
     }))
 
 }

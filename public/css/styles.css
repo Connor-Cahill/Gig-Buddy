@@ -20,6 +20,12 @@ b {
     font-size: 1.1em;
 }
 
+label {
+    color: #981D1A;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
 
 
 
@@ -466,4 +472,70 @@ Form Styling
     cursor: pointer;
     background-color: #981D1A;
     color: #FBFFF9;
+}
+
+/******
+Service Form Styling
+*************/
+
+
+.service-input {
+    border: none;
+    border-bottom: solid lightgray thin;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1em;
+}
+
+.service-input:focus {
+    outline: none;
+}
+
+.pricing-input {
+    width: 5%;
+}
+
+.service-form-btn-div {
+    display: flex;
+    width: 90%;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.service-form-btn {
+    border: solid #4caf50;
+    padding: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+    color: #981D1A;
+    font-weight: bold;
+    font-size: .9em;
+    transition: all 300ms;
+    margin-top: 4px;
+    margin-left: 24px;
+}
+
+.service-form-btn:hover {
+    color: #FBFFF9;
+    background-color: #4caf50;
+    cursor: pointer;
+}
+
+
+/*******
+Services Index Styling:
+************************/
+
+
+
+.no-service-div {
+    width: 70%;
+    margin: auto;
+    margin-top: 8px;
+    padding: 8px;
+}
+.no-services-warning {
+    color: #981D1A;
+    font-size: 1.3em;
+    text-shadow: 1px 1px 0px rgba(152,29,26,0.6);
+    margin-bottom: 0px;
 }

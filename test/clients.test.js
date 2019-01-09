@@ -60,7 +60,6 @@ describe('Clients', () => {
         const newClient = new Client(sampleClient);
         newClient.save()
         .then(() => {
-            console.log('Before the 1st find*')
             Client.find({})
             .then(clients => {
                 const clientCount = clients.length || 0;
@@ -97,6 +96,25 @@ describe('Clients', () => {
         })
         .catch(err => done(err))
         
+    });
+
+    it('Should render single clients-show and single client at GET: /clients/:id', (done) => {
+        Client.findOneAndRemove(sampleClient)
+        .then(() => {
+            const client = new Client(sampleClient);
+            client.save()
+            .then((client) => {
+                agent
+                .get(`/clients/${client._id}`)
+                .end((err, res) => {
+                    res.status.should.be.equal(200);
+                    res.should.be.html;
+                    return done();
+                })
+            })
+            .catch(err => done(err))
+        })
+        .catch(err => done(err))
     });
     
 })
