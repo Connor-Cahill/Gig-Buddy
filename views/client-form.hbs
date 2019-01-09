@@ -1,15 +1,22 @@
 
 
-<h1>client form</h1>
-<form action="/clients" method="post">
-    <label for="name">Client Name</label>
-    <input type="text" name="name" class="form-input">
-    <label for="clientDesc">Client Description</label>
-    <input type="text" name="description" class="form-input">
-    <label for="email">Contact Email</label>
-    <input type="text" name="email" class="form-input">
-    <label for="phoneNumber">Contact Phone #</label>
-    <input type="text" name="phoneNumber" class="form-input">
-    <button type="submit" class="form-btn">Add</button>
+<h1 class="form-header">Add A New Client</h1>
+<form action="/clients" method="post" class="clients-form">
+    <label for="name">Client Name:</label>
+    <input type="text" name="name" class="form-input a" placeholder="Good Coffee Co.">
+    <span>
+        <label for="email">Contact Email:</label>
+        <input type="text" name="email" class="form-input c" placeholder="ClientBizName@email.com">
+        <label for="phoneNumber">Contact Phone #:</label>
+        <input type="text" name="phoneNumber" class="form-input d" placeholder="(415)123-4567">
+    </span>
+    <div>
+        <label for="clientDesc">Client Description:</label>
+        <input type="text" name="description" class="form-input b" placeholder="A small coffee shop located in Colorado.">  
+    </div>
+    <div class="form-btn-div">
+        <a href="/clients" class="cancel-btn">Cancel</a>
+        <button type="submit" class="form-btn">Add Client</button>
+    </div>
 </form>
 
