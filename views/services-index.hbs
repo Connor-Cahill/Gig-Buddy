@@ -5,6 +5,7 @@
 
 <div class="clients-index-container">
     {{#if services}}
+        <h2 class="all-services-header">Your Services:</h2>
         <div class="service-index-table">
             {{#each services}}
             <div class="row-flex">
@@ -18,6 +19,12 @@
             </div>
             <div class="divider"></div>
             {{/each}}
+            <div class="dropdown-flex">
+                <button class="add-service-btn" id="toggle-form-btn"><i class="fas fa-plus"></i> Add Service</button>
+                <div id="service-form-dropdown" class="hidden">
+                    {{> service-form}}
+                </div>
+            </div> 
         </div>
         {{else}}
         <div class="no-service-div">

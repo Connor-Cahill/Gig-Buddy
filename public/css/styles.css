@@ -502,16 +502,16 @@ Service Form Styling
 }
 
 .service-form-btn {
-    border: solid #4caf50;
     padding: 4px;
     padding-left: 8px;
     padding-right: 8px;
-    color: #981D1A;
+    background: none;
+    border: none;
+    color: #4caf50;
     font-weight: bold;
-    font-size: .9em;
+    font-size: 1em;
     transition: all 300ms;
     margin-top: 4px;
-    margin-left: 24px;
 }
 
 .service-form-btn:hover {
@@ -521,10 +521,54 @@ Service Form Styling
 }
 
 
+
+
 /*******
 Services Index Styling:
 ************************/
 
+.all-services-header {
+    color: #981D1A;
+    text-shadow: 1px 1px 0px rgba(152,29,26,0.6);
+    font-size: 2em;
+}
+
+.service-index-table {
+    border-top: solid black;
+}
+
+.hidden {
+    display: none;
+}
+.showing {
+    display: block;
+}
+
+.add-service-btn {
+    padding: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+    border: solid #4caf50;
+    color: #4caf50;
+    font-weight: bold;
+    font-size: .9em;
+    transition: all 300ms;
+    margin-top: 4px;
+    margin-right: 8px;
+}
+
+.add-service-btn:hover {
+    cursor: pointer;
+    color: #FBFFF9;
+    background-color: #4caf50;
+
+}
+
+.btn-in-use {
+    cursor: pointer;
+    color: #FBFFF9;
+    background-color: #4caf50;
+}
 
 
 .no-service-div {
@@ -538,4 +582,9 @@ Services Index Styling:
     font-size: 1.3em;
     text-shadow: 1px 1px 0px rgba(152,29,26,0.6);
     margin-bottom: 0px;
+}
+
+.dropdown-flex {
+    display: flex;
+    flex-direction: row;
 }
