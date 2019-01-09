@@ -4,21 +4,22 @@
 <div class="clients-index-container">
     {{> mainNav }}
     <div class="btn-flex">
-        <a href="/clients/new">make new</a>
+        <a href="/clients/new" class="new-client-btn">Add Client</a>
     </div>
         <div class="clients-container">
             {{#each clients}}
-            <div class="client-card">
-                <h2>{{ this.name }}</h2>
-                <p class="client-services-header">Services:</p>
-                <ul class="client-service-list">
-                    <li>some service</li>
-                    <li>some service</li>
-                    <li>some service</li>
-                </ul>
-                <a href="/clients/{{ this._id }}">go to</a>
-                <p class="client-total-billed">Total Billed: $##</p>
-            </div>
+            <a href="/clients/{{ this._id }}" class="big-link">
+                <div class="client-card">
+                    <h2>{{ this.name }}</h2>
+                    <p class="client-services-header">Services:</p>
+                    <ul class="client-service-list">
+                        <li>some service</li>
+                        <li>some service</li>
+                        <li>some service</li>
+                    </ul>
+                    <p class="client-total-billed">Total Billed: $##</p>
+                </div>
+            </a>
         {{/each}}
         </div>
         
