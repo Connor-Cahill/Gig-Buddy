@@ -17,7 +17,7 @@ module.exports = function(app) {
         const totalClients = req.totalClients
         //  setting req.clientIndex for styling purposes
         req.clientIndex = true;
-        
+
         const user = await User.findOne({ _id: req.user._id }).populate('clients').populate({
             path: 'clients',
             populate: {
@@ -44,7 +44,8 @@ module.exports = function(app) {
         const totalClients = req.totalClients
         const clients = req.clientList;
         const client = await Client.findOne({ _id: req.params.id }).populate('services').exec();
-        const services = await Service.find({}).exec();
+        const user = await User.findById(req.user._id).populate('services');
+        const services = user.services;
         res.render('clients-show', { client, services, clients, totalServices, totalClients, monthlyServices, oneTimeServices, user: req.user });
     }))
 
