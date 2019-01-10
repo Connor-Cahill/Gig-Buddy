@@ -227,7 +227,6 @@ Clients Index Styling:
     flex-direction: row;
     float: left;
     flex-wrap: wrap;
-    
 
 }
 
@@ -262,6 +261,36 @@ Clients Index Styling:
     color: #981D1A;
     text-shadow: .5px 1px 0px rgba(152,29,26,0.6);
 
+}
+
+.setup-clients-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.setup-client-btn {
+    text-decoration: none;
+    color: #981D1A;
+    margin-top: 32px;
+    background: none;
+    text-align: center;
+    border: solid #981D1A;
+    font-size: .7em;
+    width: 50%;
+    transition: all 300ms;
+}
+
+.setup-client-btn::after {
+    text-decoration: none;
+    color: inherit;
+}
+
+.setup-client-btn:hover {
+    color: #FBFFF9;
+    background-color: #981D1A;
+    cursor: pointer;
+    
 }
 
 
@@ -422,13 +451,27 @@ Form Styling
     border-bottom: solid lightgray thin;
 }
 
+.client-name-input-span {
+    display: flex;
+    flex-direction: row;
+}
 .a {
-    width: 100%;
+    width: 80%;
+    min-width: 40%;
 }
 
 .b {
     width: 100%;
 }
+
+.client-service-input {
+    margin-bottom: 40px;
+}
+
+.form-checkbox {
+    margin-left: 40px;
+}
+
 
 .form-btn-div {
     display: flex;
@@ -474,6 +517,29 @@ Form Styling
     color: #FBFFF9;
 }
 
+
+.no-services-form-btn-div {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 70%;
+}
+
+.no-services-form-btn {
+    color: #4caf50;
+    background: none;
+    border: solid #4caf50;
+    padding: 8px 4px 8px 4px;
+    font-size: .85em;
+    transition: all 300ms;
+}
+
+.no-services-form-btn:hover {
+    color: #FBFFF9;
+    background-color: #4caf50;
+    cursor: pointer;
+}
 /******
 Service Form Styling
 *************/

@@ -12,13 +12,20 @@
             <a href="/clients/{{ this._id }}" class="big-link">
                 <div class="client-card">
                     <h2 class="client-index-name">{{ this.name }}</h2>
+                    {{#if this.services}}
                     <p class="client-services-header">Services:</p>
                     <ul class="client-service-list">
-                        <li>some service</li>
-                        <li>some service</li>
-                        <li>some service</li>
+                        {{#each this.services}}
+                        <li>{{ this.name }}</li>
+                        {{/each}}
                     </ul>
                     <p class="client-total-billed">Total Billed: $##</p>
+                    {{else}}
+                    <div class="setup-clients-container">
+                        <small class="no-client-services">Looks like you don't have any services setup for this client ...</small>
+                        <a href="/clients/{{ this._id }}" class="setup-client-btn">Set Up</a>
+                    </div>
+                    {{/if}}
                 </div>
             </a>
         {{/each}}

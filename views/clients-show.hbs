@@ -10,19 +10,36 @@
     <div class="show-services-container">
         <h3 class="show-services-header">Services:</h3>
         <div class="services-table">
+            {{#if client.services}}
+            {{#each client.services}}
             <div class="row-flex">
-                <p class="service-table-name"><b>Service Name</b></p>
-                <p class="service-table-price"><b>Service Price:</b>  $##</p>
+                <p class="service-table-name"><b>{{ this.name }}</b></p>
+                <p class="service-table-price"><b>Service Price:</b>  ${{ this.pricing }}</p>
+                 {{#if this.reoccuring}}
                 <p class="service-table-reoccuring"><b>Reoccuring Payments:</b> Yes</p>
+                {{else}}
+                <p class="service-table-reoccuring"><b>Reoccuring Payments:</b> No</p>
+                {{/if}}
             </div>
             <div class="divider"></div>
-            <div class="row-flex">
-                <p class="service-table-name"><b>Service Name</b></p>
-                <p class="service-table-price"><b>Service Price:</b> $##</p>
-                <p class="service-table-reoccuring"><b>Reoccuring Payments:</b> Yes</p>
-            </div>
-            <div class="divider"></div>
-            
+            {{/each}}
+           {{else}}
+           <div class="no-service-div">
+            <p class="no-services-warning">You don't have any services setup!</p>
+            <p class="no-service-byline">Lets set some up now...</p>
+            {{#if services}}
+            <form action="/clients/{{client._id}}?_method=PUT" method="post">
+                <label for="services">Services</label><br>
+                {{#each services}}
+                <span><input type="checkbox" name="services" class="form-checkbox" value="{{ this._id }}">{{ this.name }}</span>
+                {{/each}}
+                <div class="no-services-form-btn-div">
+                    <button type="submit" class="no-services-form-btn">Add Services</button>
+                </div>
+            </form>
+            {{/if}}
+        </div>
+        {{/if}}
         </div>
     </div>
 </div>

@@ -2,16 +2,26 @@
 
 <h1 class="form-header">Add A New Client</h1>
 <form action="/clients" method="post" class="clients-form">
-    <label for="name">Client Name:</label>
-    <input type="text" name="name" class="form-input a" placeholder="Good Coffee Co.">
+    <span class="client-name-input-span">
+        <label for="name">Client Name:</label>
+        <input type="text" name="name" class="form-input a" placeholder="Good Coffee Co.">
+    </span>
     <span>
         <label for="email">Contact Email:</label>
         <input type="text" name="email" class="form-input c" placeholder="ClientBizName@email.com">
         <label for="phoneNumber">Contact Phone #:</label>
         <input type="text" name="phoneNumber" class="form-input d" placeholder="(415)123-4567">
     </span>
+    {{#if services}}
+    <div class="client-service-input">
+        <label for="services">Services You Provide Them: </label><br>
+        {{#each services}}
+        <span><input type="checkbox" name="services" class="form-checkbox" value="{{ this._id }}">{{ this.name }}</span>
+        {{/each}}
+    </div>
+    {{/if}}
     <div>
-        <label for="clientDesc">Client Description:</label>
+        <label for="clientDesc" class="clientDesc-label">Client Description:</label>
         <input type="text" name="description" class="form-input b" placeholder="A small coffee shop located in Colorado.">  
     </div>
     <div class="form-btn-div">
