@@ -10,11 +10,11 @@
         </div>
         <div class="image-name-section b">
             <img src="/assets/DefaultProPic.png" alt="profile picture" class="profile-pic">
-            <p class="hero-username">Users Name</p>
+            <p class="hero-username">{{ user.firstName }} {{ user.lastName }}</p>
             <p class="hero-client-count">Client Count: <i>{{ totalClients }}</i></p>
         </div>
         <div class="service-snippets c">
-            <h2 class="service-snippet-header">You Currently <i class="special">{{ totalServices }}</i>  Services Open Right Now:</h2>
+            <h2 class="service-snippet-header">You Currently have <i class="special">{{ totalServices }}</i> Services Open Right Now:</h2>
             <p class="service-snippet-small"><i class="special">{{ monthlyServices }}</i> monthly repeating</p>
             <p class="service-snippet-small"><i class="special">{{ oneTimeServices }}</i> one time services</p>
         </div>

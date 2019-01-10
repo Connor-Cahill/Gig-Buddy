@@ -1,15 +1,8 @@
 
 
 <nav class="main-nav">
-    {{#if clientIndex}}
-    <a href="/clients" class="main-nav-btn selected" id="btn-a">Clients</a>
-    {{else}}
-    <a href="/clients" class="main-nav-btn" id="btn-a">Clients</a>
-    {{/if}}
-    {{#if serviceIndex}}
-    <a href="/services" class="main-nav-btn selected" id="btn-b">Services</a>
-    {{else}}
-    <a href="/services" class="main-nav-btn" id="btn-b">Services</a>
-    {{/if}}
+    
+    <a href="/clients" class="main-nav-btn{{#if clientIndex}} selected{{/if}}" id="btn-a">Clients</a>
+    <a href="/services" class="main-nav-btn{{#if serviceIndex}} selected{{/if}}" id="btn-b">Services</a>
     <a href="#" class="main-nav-btn" id="btn-c">Payments</a>
 </nav>

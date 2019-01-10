@@ -1,5 +1,6 @@
 const wrap = require('./errorHandler');
 const Client = require('../models/client');
+const User = require('../models/user');
 const Service = require('../models/service');
 
 
@@ -9,7 +10,10 @@ along data about number of services you currently have open.
 It also separates it into monthly and oneTime payments.
 */
 module.exports = wrap(async (req, res, next) => {
-    const clients = await Client.find({}).populate('services').exec();
+    // const clients = await Client.find({}).populate('services').exec();
+    const user = await User.findById(req.user._id).populate('clients').populate({ path: 'clients', populate: { path: 'services'}})
+    const clients = user.clients;
+
     let totalServices = 0;
     let monthlyServices = 0;
     let oneTimeServices = 0;
@@ -29,7 +33,7 @@ module.exports = wrap(async (req, res, next) => {
         } else {
             return false
         }
-    }
+    };
 
     clients.forEach((client) => {
         const services = client.services;
@@ -50,7 +54,4 @@ module.exports = wrap(async (req, res, next) => {
     req.oneTimeServices = oneTimeServices;
     req.totalClients = clients.length;
     return next();
-
-
-
 })

@@ -19,7 +19,7 @@ const UserSchema = new Schema({
 })
 
 UserSchema.pre('save', (next) => {
-    if (!this.password) {
+    if (this.password === null || this.password === '') {
         console.log('ERROR: User must have password!')
         return next();
     }

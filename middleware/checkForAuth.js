@@ -3,10 +3,14 @@ const jwt = require('jsonwebtoken');
 const wrap = require('./errorHandler');
 
 module.exports = wrap(async (req, res, next) => {
-    if (req.cookies.Token) {
-        const userId = jwt.decode(req.cookies.Token, process.env.SECRET)._id;
-        const user = await User.findById(userId).exec();
+    if (req.cookies.Token === 'undefined' || req.cookies.Token === null) {
+        req.user = null;
+    } else {
+        const token = req.cookies.Token;
+        const uid = jwt.decode(token, process.env.SECRET)._id;
+        const user = await User.findById(uid).exec();
         req.user = user;
-        return next();
+        res.locals.user = user;
     }
+    return next();
 })
