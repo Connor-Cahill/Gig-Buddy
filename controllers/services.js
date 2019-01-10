@@ -1,14 +1,20 @@
 const Service = require('../models/service');
 const wrap = require('../middleware/errorHandler');
 const sendCli = require('../middleware/sendClientsList');
+const headerData = require('../middleware/calcHeaderStats');
 
 
 module.exports = function(app) {
     //GET: renders list of all user's Services
-    app.get('/services', sendCli, wrap(async (req, res) => {
+    app.get('/services', sendCli, headerData, wrap(async (req, res) => {
+        //below vars are necessary for sending the data displayed in header
+        const totalServices = req.totalServices;
+        const monthlyServices = req.monthlyServices;
+        const oneTimeServices = req.oneTimeServices;
+        const totalClients = req.totalClients
         const clients = req.clientList;
         const services = await Service.find({}).exec();
-        res.render('services-index', { services, clients });
+        res.render('services-index', { services, clients, totalServices, totalClients, monthlyServices, oneTimeServices });
     }));
 
     //POST: creates a new Service LATER: will append to user:

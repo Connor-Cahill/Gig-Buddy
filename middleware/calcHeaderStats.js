@@ -48,6 +48,7 @@ module.exports = wrap(async (req, res, next) => {
     req.totalServices = totalServices;
     req.monthlyServices = monthlyServices;
     req.oneTimeServices = oneTimeServices;
+    req.totalClients = clients.length;
     return next();
 
 
