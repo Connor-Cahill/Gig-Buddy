@@ -2,6 +2,7 @@ const Service = require('../models/service');
 const wrap = require('../middleware/errorHandler');
 const sendCli = require('../middleware/sendClientsList');
 const headerData = require('../middleware/calcHeaderStats');
+const userAuth = require('../middleware/userAuth');
 
 
 module.exports = function(app) {
