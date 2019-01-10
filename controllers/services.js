@@ -13,8 +13,10 @@ module.exports = function(app) {
         const oneTimeServices = req.oneTimeServices;
         const totalClients = req.totalClients
         const clients = req.clientList;
+        //  setting req.serviceIndex for styling purposes
+        req.serviceIndex = true;
         const services = await Service.find({}).exec();
-        res.render('services-index', { services, clients, totalServices, totalClients, monthlyServices, oneTimeServices });
+        res.render('services-index', { services, clients, totalServices, totalClients, monthlyServices, oneTimeServices, serviceIndex: req.serviceIndex });
     }));
 
     //POST: creates a new Service LATER: will append to user:

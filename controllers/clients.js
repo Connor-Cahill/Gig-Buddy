@@ -14,9 +14,11 @@ module.exports = function(app) {
         const monthlyServices = req.monthlyServices;
         const oneTimeServices = req.oneTimeServices;
         const totalClients = req.totalClients
+        //  setting req.clientIndex for styling purposes
+        req.clientIndex = true;
 
         const clients = await Client.find({}).populate('services').exec();
-        res.render('clients-index', { clients, totalServices, monthlyServices, oneTimeServices, totalClients });
+        res.render('clients-index', { clients, totalServices, monthlyServices, oneTimeServices, totalClients, clientIndex: req.clientIndex });
     }));
 
     //  GET: renders the clients form and sends service data 
