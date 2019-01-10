@@ -1,13 +1,21 @@
 const Client = require('../models/client');
 const wrap = require('../middleware/errorHandler');
-const Service = require('../models/service')
+const Service = require('../models/service');
+const headerData = require('../middleware/calcHeaderStats');
+const sendCli = require('../middleware/sendClientsList');
+
 
 module.exports = function(app) {
 
     // // GET: returns list of all clients
-    app.get('/clients', wrap( async (req, res) => {
+    app.get('/clients', headerData, wrap( async (req, res) => {
+        //below vars are necessary for sending the data displayed in header
+        const totalServices = req.totalServices;
+        const monthlyServices = req.monthlyServices;
+        const oneTimeServices = req.oneTimeServices;
+
         const clients = await Client.find({}).populate('services').exec();
-        res.render('clients-index', { clients });
+        res.render('clients-index', { clients, totalServices, monthlyServices, oneTimeServices });
     }));
 
     //  GET: renders the clients form and sends service data 
@@ -17,10 +25,11 @@ module.exports = function(app) {
     }))
 
     //  GET: returns single client given the ID 
-    app.get('/clients/:id', wrap( async (req, res) => {
+    app.get('/clients/:id', sendCli, wrap( async (req, res) => {
+        const clients = req.clientList;
         const client = await Client.findOne({ _id: req.params.id }).populate('services').exec();
         const services = await Service.find({}).exec();
-        res.render('clients-show', { client, services });
+        res.render('clients-show', { client, services, clients });
     }))
 
     

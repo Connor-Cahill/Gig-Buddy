@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const ServiceSchema = new Schema({
     name: { type: String, required: true },
     pricing: { type: Number, required: true },
-    reoccuring: { type: Boolean, required: true },
+    reoccurring: { type: Boolean, required: true },
 })
 
 

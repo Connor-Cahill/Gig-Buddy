@@ -11,7 +11,7 @@ const agent = chai.request.agent(server);
 const sampleService = {
     name: 'Test Service',
     pricing: 100,
-    reoccuring: true,
+    reoccurring: true,
 };
 
 
