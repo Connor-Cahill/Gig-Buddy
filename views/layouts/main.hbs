@@ -16,9 +16,12 @@
     <nav class="auth-nav">
         <h3 class="branding">Gig Buddy</h3>
         <div class="auth-btn-container">
-            <a class="auth-btn" href="#">Sign In</a>
-            <a class="auth-btn" href="#">Sign Up</a>
-            <a class="auth-btn" href="#">Sign Out</a>
+            {{#unless req.user}}
+            <a class="auth-btn" href="/sign-in">Sign In</a>
+            <a class="auth-btn" href="/sign-up">Sign Up</a>
+            {{else}}
+            <a class="auth-btn" href="/sign-out">Sign Out</a>
+            {{/unless}}
         </div>
         
     </nav>

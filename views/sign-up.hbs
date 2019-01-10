@@ -1,0 +1,33 @@
+
+<div class="auth-form-header-container">
+    <h1 class="form-header">Welcome To Gig Buddy</h1>
+    <small class="form-header-byline">Create your account today to organize your work, get paid, and conquer the Gig Economy!</small>
+</div>
+<form action="/sign-up" method="post" class="auth-form">
+    <span class="auth-full-name">
+        <label for="firstName" class="auth-label">First Name: </label>
+        <input type="text" name="firstName" class="form-input name-in" placeholder="Elon">
+        <label for="lastName" class="auth-label">Last Name: </label>
+        <input type="text" class="form-input name-in" name="lastName" placeholder="Musk">
+    </span>
+    <div class="auth-contact-info">
+        <span>
+            <label for="email" class="auth-label">Email: </label>
+            <input type="text" name="email" class="form-input contact-in" placeholder="myName@email.com"> 
+            <label for="password">Password</label>
+            <input type="password" name="password" class="form-input contact-in" placeholder="Password123">
+        </span>
+        <span>
+            <label for="phoneNumber" class="auth-label">Phone #: </label>
+            <input type="text" class="form-input contact-in" name="phoneNumber" placeholder="(913)123-4567">
+            <label for="venmoUsername" class="auth-label">Venmo Username: </label>
+            <input type="text" name="vemnoUsername" placeholder="MyUsername123" class="form-input contact-in">
+        </span>
+    </div>
+    <input type="hidden" name="admin" value="false">
+    <div class="form-btn-div auth-div">
+        <a href="/" class="cancel-btn">Cancel</a>
+        <button type="submit" class="form-btn">Sign Up</button>
+    </div>
+</form>
+

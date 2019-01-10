@@ -26,8 +26,34 @@ label {
     font-weight: bold;
 }
 
+/********
+Auth Forms Styling:
+**************/
 
+.auth-form-header-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 24px;
+}
+.form-header-byline {
+    align-self: center;
+    margin-top: -16px;
+}
 
+.auth-form {
+    width: 50%;
+    margin: auto;
+}
+.sign-in {
+    width: 40%;
+}
+
+.auth-contact-info {
+    display: flex;
+    flex-direction: column;
+
+}
 
 
 
@@ -517,6 +543,15 @@ Form Styling
     color: #FBFFF9;
 }
 
+.name-in {
+    width: 30%;
+}
+.contact-in {
+    width: 34%;
+}
+.venmo-in {
+    width: 70%;
+}
 
 .no-services-form-btn-div {
     margin-top: 16px;
@@ -539,6 +574,10 @@ Form Styling
     color: #FBFFF9;
     background-color: #4caf50;
     cursor: pointer;
+}
+
+.auth-div {
+    margin-right: 112px;
 }
 /******
 Service Form Styling

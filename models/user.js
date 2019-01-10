@@ -7,7 +7,8 @@ const UserSchema = new Schema({
     createdAt: { type: Date, default: Date.now() },
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
-    email: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+    profileImage: { type: String, required: false },
     phoneNumber: { type: String, required: true },
     venmoUsername: { type: String, required: false },
     password: { type: String, required: true },
@@ -17,7 +18,13 @@ const UserSchema = new Schema({
 
 })
 
-
+UserSchema.pre('save', (next) => {
+    if (!this.password) {
+        console.log('ERROR: User must have password!')
+        return next();
+    }
+    return next();
+})
 
 //  Generate Hash For Password
 UserSchema.methods.generateHash = function(password) {

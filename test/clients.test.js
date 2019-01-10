@@ -6,8 +6,8 @@ const should = chai.should();
 const expect = chai.expect;
 
 chai.use(chaiHttp);
-
 const agent = chai.request.agent(server);
+
 const sampleClient = {
     name: 'Test Client',
     description: 'This is a testing client',
