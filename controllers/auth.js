@@ -4,7 +4,7 @@ const wrap = require('../middleware/errorHandler');
 
 module.exports = function(app) {
 
-    //GET: renders signup page
+    //GET: renders sign-up page
     app.get('/sign-up', (req, res) => {
         res.render('sign-up');
     })

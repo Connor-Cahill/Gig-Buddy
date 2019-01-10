@@ -17,8 +17,7 @@ module.exports = function(app) {
         const totalClients = req.totalClients
         //  setting req.clientIndex for styling purposes
         req.clientIndex = true;
-        console.log(req.user)
-
+        
         const user = await User.findOne({ _id: req.user._id }).populate('clients').populate({
             path: 'clients',
             populate: {

@@ -4,6 +4,7 @@ const server = require('../app.js');
 const Service = require('../models/service');
 const should = chai.should();
 const expect = chai.expect;
+const User = require('../models/user');
 
 chai.use(chaiHttp);
 
@@ -14,8 +15,35 @@ const sampleService = {
     reoccurring: true,
 };
 
+const sampleUser = {
+    firstName: 'Test',
+    lastName: 'Dude',
+    email: 'testdude@test.com',
+    phoneNumber: '(417)123-4567',
+    venmoUsername: 'testDuder',
+    password: 'test',
+}
+
 
 describe('Services', () => {
+
+    before((done) => {
+        agent 
+        .post('/sign-up')
+        .send(sampleUser)
+        .then(() => {
+            return done();
+        })
+        .catch(err => done(err))
+    })
+
+    after((done) => {
+        User.findOneAndRemove(sampleUser)
+        .then(() => {
+            return done()
+        })
+        .catch(err => done(err))
+    })
 
     it('Should return all of a users services at GET: /services', (done) => {
         agent

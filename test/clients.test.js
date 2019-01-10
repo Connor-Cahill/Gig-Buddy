@@ -2,6 +2,7 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const server = require('../app.js');
 const Client = require('../models/client');
+const User = require('../models/user');
 const should = chai.should();
 const expect = chai.expect;
 
@@ -15,8 +16,35 @@ const sampleClient = {
     phoneNumber: '(913)209-4938',
 };
 
+const sampleUser = {
+    firstName: 'Test',
+    lastName: 'Dude',
+    email: 'testdude@test.com',
+    phoneNumber: '(417)123-4567',
+    venmoUsername: 'testDuder',
+    password: 'test',
+
+}
 
 describe('Clients', () => {
+
+    before((done) => {
+        agent 
+        .post('/sign-up')
+        .send(sampleUser)
+        .then(() => {
+            return done();
+        })
+        .catch(err => done(err))
+    })
+
+    after((done) => {
+        User.findOneAndRemove(sampleUser)
+        .then(() => {
+            return done()
+        })
+        .catch(err => done(err))
+    })
 
     it('Should return all clients at GET: /clients', (done) => {
         agent
@@ -56,31 +84,28 @@ describe('Clients', () => {
     });
 
 
-    it('Should remove Client from database at DELETE: /clients/:id', (done) => {
-        const newClient = new Client(sampleClient);
-        newClient.save()
-        .then(() => {
-            Client.find({})
-            .then(clients => {
-                const clientCount = clients.length || 0;
-                    
-                agent
-                .delete(`/clients/${newClient._id}`)
-                .then((res) => {
-                    console.log('Before the 2nd find**')
-                    Client.find({})
-                    .then((updatedClients) => {
-                        clientCount.should.be.equal(updatedClients.length + 1);
-                        return done();
-                    })
-                    .catch(err => done(err))
-                })
-                .catch(err => done(err))
-            })
-            .catch(err => done(err))
-        })
-        .catch(err => done(err));
-    });
+    // it('Should remove Client from database at DELETE: /clients/:id', (done) => {
+    //     const newClient = new Client(sampleClient);
+    //     newClient.save()
+    //     .then(() => {
+    //         const clients = user.clients;
+    //         const clientCount = clients.length || 0;
+                
+    //         agent
+    //         .delete(`/clients/${newClient._id}`)
+    //         .then((res) => {
+    //             const updateClients = user.clients.length; 
+    //             Client.find({})
+    //             .then((updatedClients) => {
+    //                 clientCount.should.be.equal(updatedClients.length + 1);
+    //                 return done();
+    //             })
+    //             .catch(err => done(err))
+    //         })
+    //         .catch(err => done(err))
+    //     })
+    //     .catch(err => done(err));
+    // });
 
     it('Should render an html page and have status 200 at DELETE: /clients/:id', (done) => {
         const client = new Client(sampleClient);
