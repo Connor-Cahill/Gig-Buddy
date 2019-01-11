@@ -15,24 +15,40 @@ module.exports = function(app) {
         const monthlyServices = req.monthlyServices;
         const oneTimeServices = req.oneTimeServices;
         const totalClients = req.totalClients;
-        //  setting req.clientIndex for styling purposes
-        req.clientIndex = true;
+        //  setting req.paymentsIndex for styling purposes
+        req.paymentsIndex = true;
 
-        const user = await User.findById(req.user._id).populate('billingHistory').exec();
+        const user = await User.findById(req.user._id).populate('billingHistory').populate({ path: 'billingHistory', populate: { path: 'client'}}).populate({ path: 'billingHistory', populate: { path: 'service'}}).exec();
         const payments = user.billingHistory;
-        res.render('payments-index', { payments, totalServices, monthlyServices, oneTimeServices, totalClients, clientIndex: req.clientIndex, user: req.user });
+        res.render('payments-index', { payments, totalServices, clients: req.clientList, monthlyServices, oneTimeServices, totalClients, paymentsIndex: req.paymentsIndex, user: req.user });
     }));
 
     //  POST: creates a new payment and adds it to client 
-    app.post('/payments', userAuth, wrap(async (req, res) => {
+    app.post('/clients/:clientId/payments', userAuth, wrap(async (req, res) => {
+        console.log('Somethings going on in here...')
         const payment = new Payment(req.body);
-        const clientId = req.body.client;
+        const clientId = req.params.clientId;
+        const service = await Service.findById(payment.service).exec();
+        //  setting Payment properties. Amount set equal to cost of service
+        payment.client = clientId;
+        payment.amount = service.pricing;
+        payment.service = service;
         payment.paid = false;
         await payment.save();
+
+        //  Saving the payment to the given client.
         const client = await Client.findById(clientId).exec();
         client.payments.unshift(payment);
+        client.services.pop(client.services.indexOf(service._id));
+        client.billedServices.unshift(service._id);
         await client.save();
-        return res.redirect(`/clients/${ client._id }`);
+
+        //  Saving the payment into the users billingHistory
+        const user = await User.findById(req.user._id).exec();
+        user.billingHistory.unshift(payment);
+        await user.save();
+
+        return res.sendStatus(200);
     }));
 
     //  DELETE: deletes a payment and deletes from client
@@ -40,18 +56,21 @@ module.exports = function(app) {
         const paymentId = req.params.id;
         const clientId = req.params.clientId;
         const client = await Client.findById(clientId).exec();
-
-        client.payments.pop(indexOf(paymentId));
+        //  remove the payment from the client 
+        client.payments.pop(client.payments.indexOf(paymentId));
         await client.save();
+        //  finally ... remove the payment 
         await Payment.findOneAndRemove({ _id: paymentId }).exec();
         return res.redirect(`/clients/${ clientId }`);
     }));
 
-    //  PUT: updates a payment
-    app.put('/payments/:id', userAuth, wrap(async (req, res) => {
+    //  PATCH: updates a payment
+    app.patch('/payments/:id', userAuth, wrap(async (req, res) => {
         const payment = await Payment.findById(req.params.id).exec();
+
         payment.set(req.body);
         await payment.save();
-        return res.redirect(window.history.previous.href);
+        //  
+        return res.redirect('/payments');
     }));
 }

@@ -1,41 +1,37 @@
 
-
+console.log('hello')
 //function that redirects user to clients/:id when client card is clicked
 function goToClient(id) {
     window.location.replace(`/clients/${id}`);
+};
+
+//  AJAX POST: creates a new Payment document and changes button content
+const postPayBtn = document.getElementById('post-payment-btn');
+const billBtnContainer = document.getElementById('bill-btn-container');
+const hiddenServiceInput = document.getElementById('service-id');
+const clientIdInput = document.getElementById('client-id');
+
+const postPayment = function postsPaymentWithServiceInReq(id) {
+    const clientId = clientIdInput.value;
+    const paymentData = {
+        service: hiddenServiceInput.value,
+    }
+    axios({
+        method: 'post',
+        url: `/clients/${ clientId }/payments`,
+        data: paymentData,
+    })
+    .then(() => {
+        billBtnContainer.innerHTML = '<small class="bill-sent-text"><i class="fas fa-check"></i> Bill Sent</small>'
+    })
 }
 
 
 //Function to toggle Serviec Form
 const formBtn = document.getElementById('toggle-form-btn');
 const dropDownForm = document.getElementById('service-form-dropdown');
-formBtn.addEventListener('click', () => {
+
+const toggleForm = function ToggleServicesDropDownForm() {
     dropDownForm.classList.toggle('showing');
     formBtn.classList.toggle('btn-in-use');
-})
-
-
-//  Function to toggle main Nav buttons color/effect
-const mainNavBtns = document.querySelectorAll('.main-nav-btn');
-console.log(mainNavBtns)
-const clientBtn = document.getElementById('btn-a');
-const servicesBtn = document.getElementById('btn-b');
-const paymentsBtn = document.getElementById('btn-c');
-const sel = 'selected'
-// mainNavBtns.forEach(function(btn) {
-//     btn.addEventListener('click', () => {
-//         btn.classList.add(sel);
-//         if (btn === clientBtn) {
-//             paymentsBtn.classList.remove(sel);
-//             servicesBtn.classList.remove(sel);
-//         } else if (btn === paymentsBtn) {
-//             servicesBtn.classList.remove(sel);
-//             clientBtn.classList.remove(sel);
-//         } else if (btn === servicesBtn) {
-//             paymentsBtn.classList.remove(sel);
-//             clientBtn.classList.remove(sel);
-//         }
-//     })
-// })
-
-
+};

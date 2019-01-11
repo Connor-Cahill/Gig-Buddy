@@ -36,7 +36,7 @@ module.exports = function(app) {
     app.delete('/services/:id', userAuth, wrap(async (req, res) => {
         await Service.findOneAndRemove({ _id: req.params.id }).exec();
         const user = await User.findOne({ _id: req.user._id }).exec();
-        user.services.pop(indexOf(req.params.id));
+        user.services.pop(user.services.indexOf(req.params.id));
         res.redirect('/services');
     }));
 

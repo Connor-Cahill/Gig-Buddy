@@ -482,6 +482,39 @@ Clients Show Styling:
 
 }
 
+.send-bill {
+    background: none;
+    color: #981D1A;
+    font-family: 'Lato', sans-serif;
+    border: none;
+    padding: 8px;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: all 400ms;
+}
+.send-bill:hover {
+    color: #FBFFF9;
+    background-color: #981D1A;
+    cursor: pointer;
+}
+.bill-sent-text {
+    color: #4caf50;
+    font-size: .8em;
+}
+.billed-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.bill-btn-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+
 
 /******
 Form Styling
@@ -730,4 +763,42 @@ Services Index Styling:
 .dropdown-flex {
     display: flex;
     flex-direction: row;
+}
+
+
+/*****
+Payments Index Styling
+***********************************/
+.payment-warning {
+    text-align: center;
+    
+}
+.payment-warning-btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+}
+.green {
+    color: #4caf50;
+}
+.green:hover {
+    background-color: #4caf50;
+}
+.red {
+    color: #981D1A;
+}
+.red:hover {
+    background-color: #981D1A
+}
+.pay-warning-link {
+    transition: all 300ms;
+    padding: 8px;
+}
+.pay-warning-link::after {
+    color: inherit;
+}
+.pay-warning-link:hover {
+    color: white;
+    text-decoration: none;
 }

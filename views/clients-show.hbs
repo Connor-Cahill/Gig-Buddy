@@ -9,6 +9,7 @@
     
     <div class="show-services-container">
         <h3 class="show-services-header">Services:</h3>
+        <input type="hidden" id="client-id" name="client" value="{{ client._id }}">
         <div class="services-table">
             {{#if client.services}}
             {{#each client.services}}
@@ -20,6 +21,26 @@
                 {{else}}
                 <p class="service-table-reoccurring"><b>reoccurring Payments:</b> No</p>
                 {{/if}}
+                    <input type="hidden" id="service-id" name="service" value="{{ this._id }}">
+                    <div id="bill-btn-container">
+                        <button class="send-bill" onclick="postPayment()">Send Bill</button>
+                    </div>
+            </div>
+            <div class="divider"></div>
+            {{/each}}
+            {{#each client.billedServices}}
+            <div class="row-flex">
+            <p class="service-table-name"><b>{{ this.name }}</b></p>
+            <p class="service-table-price"><b>Service Price:</b>  ${{ this.pricing }}</p>
+                {{#if this.reoccurring}}
+            <p class="service-table-reoccurring"><b>reoccurring Payments:</b> Yes</p>
+            {{else}}
+            <p class="service-table-reoccurring"><b>reoccurring Payments:</b> No</p>
+            {{/if}}
+                <input type="hidden" id="service-id" name="service" value="{{ this._id }}">
+                <div id="bill-btn-container billed-container">
+                    <small class="bill-sent-text"><i class="fas fa-check"></i> Bill Sent</small>
+                </div>
             </div>
             <div class="divider"></div>
             {{/each}}

@@ -1,0 +1,30 @@
+{{> hero-section }}
+<div class="main-nav-container">
+    {{> mainNav }}
+</div>
+
+<div class="clients-index-container">
+    {{#if payments}}
+        <h2 class="all-services-header">Payments Feed:</h2>
+        <div class="service-index-table">
+            {{#each payments}}
+            <div class="row-flex">
+                <p class="service-table-name"><b>${{ this.amount }}</b></p>
+                <p class="service-table-price"><b>For:</b> {{ this.service.name }}</p>
+                <p class="service-table-price"><b>Client To Pay:</b> {{ this.client.name }}</p>
+            </div>
+            <div class="divider"></div>
+            {{/each}}
+        </div>
+        {{else}}
+        <div class="no-service-div payment-warning">
+            <p class="no-services-warning">You don't have any payments open yet!</p>
+            <p class="no-service-byline ">Setup clients and services to start tracking payments.</p>
+            <div class="payment-warning-btns">
+                <a href="/clients/new" class="pay-warning-link green">Add Clients</a>
+                <a href="/services" class="pay-warning-link red">Add Services</a>
+            </div>
+        </div>
+        {{/if}}
+</div>
+

@@ -45,7 +45,7 @@ module.exports = function(app) {
         const oneTimeServices = req.oneTimeServices;
         const totalClients = req.totalClients
         const clients = req.clientList;
-        const client = await Client.findOne({ _id: req.params.id }).populate('services').exec();
+        const client = await Client.findOne({ _id: req.params.id }).populate('services').populate('billedServices').exec();
         const user = await User.findById(req.user._id).populate('services');
         const services = user.services;
         res.render('clients-show', { client, services, clients, totalServices, totalClients, monthlyServices, oneTimeServices, user: req.user });
@@ -73,7 +73,7 @@ module.exports = function(app) {
     app.delete('/clients/:id', userAuth, wrap(async (req, res) => {
         await Client.findOneAndRemove({ _id: req.params.id }).exec();
         const user = await User.findOne({ _id: req.user._id }).exec();
-        user.clients.pop(indexOf(req.params.id));
+        user.clients.pop(user.clients.indexOf(req.params.id));
         await user.save();
         res.redirect('/clients');
     }));
@@ -90,7 +90,7 @@ module.exports = function(app) {
     app.put('/clients/:id/service/:serviceId', userAuth, wrap(async (req, res) => {
         const client = await Client.findOne({ _id: req.params.id }).exec();
         const service = await Service.findOne({ _id: req.params.serviceId }).exec();
-        client.services.pop(indexOf(service));
+        client.services.pop(client.services.indexOf(service));
     }));
 
     //POST: Route allows users to send emails to clients

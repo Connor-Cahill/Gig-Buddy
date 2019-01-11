@@ -7,6 +7,7 @@ const ClientSchema = new Schema ({
     email: { type: String, required: true },
     phoneNumber: { type: String, required: true },
     services: [{ type: Schema.Types.ObjectId, ref: 'Service'}],
+    billedServices: [{ type: Schema.Types.ObjectId, ref: 'Service' }],
     payments: [{ type: Schema.Types.ObjectId, ref: 'Payment' }],
 })
 
