@@ -25,7 +25,6 @@ module.exports = function(app) {
 
     //  POST: creates a new payment and adds it to client 
     app.post('/clients/:clientId/payments', userAuth, wrap(async (req, res) => {
-        console.log('Somethings going on in here...')
         const payment = new Payment(req.body);
         const clientId = req.params.clientId;
         const service = await Service.findById(payment.service).exec();
