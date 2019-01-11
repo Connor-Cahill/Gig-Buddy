@@ -12,6 +12,10 @@
                 <p class="service-table-name"><b>${{ this.amount }}</b></p>
                 <p class="service-table-price"><b>For:</b> {{ this.service.name }}</p>
                 <p class="service-table-price"><b>Client To Pay:</b> {{ this.client.name }}</p>
+                <input type="hidden" name="payment" id="payment-paid-id" value="{{this._id}}">
+                <div id="paid-btn-container">
+                    <button class="paid-btn" onclick="updatePayment()">Payment Recieved?</button>
+                </div>
             </div>
             <div class="divider"></div>
             {{/each}}

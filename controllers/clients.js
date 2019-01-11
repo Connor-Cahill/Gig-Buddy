@@ -86,7 +86,7 @@ module.exports = function(app) {
         ((services.constructor === Array) ? services.forEach(function(service) {
             client.services.unshift(service);
         }) : client.services.unshift(services));
-        
+
         await client.save();
         res.redirect(`/clients/${client._id}`);
     }));
@@ -99,12 +99,12 @@ module.exports = function(app) {
     }));
 
     //POST: Route allows users to send emails to clients
-    app.post('/clients/:id/email', userAuth, wrap(async (req, res) => {
-        const client = await Client.findById(req.params.id);
-        const userEmail = req.user.email;
-        const clientEmail = client.email;
-        emailer(userEmail, clientEmail, 'someTemplate')
-    }));
+    // app.post('/clients/:id/email', userAuth, wrap(async (req, res) => {
+    //     const client = await Client.findById(req.params.id);
+    //     const userEmail = req.user.email;
+    //     const clientEmail = client.email;
+    //     emailer(userEmail, clientEmail, 'someTemplate')
+    // }));
 
 
 }

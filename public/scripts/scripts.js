@@ -47,4 +47,21 @@ const toggleForm = function ToggleServicesDropDownForm() {
     formBtn.classList.toggle('btn-in-use');
 };
 
+//  Onclick method for updating Payment.paid from false to true
+const paymentPaidBtn = document.getElementById('paid-btn');
+const paymentPaidId = document.getElementById('payment-paid-id');
+const paidBtnContainer = document.getElementById('paid-btn-container');
+
+const updatePayment = function updatePaymentsPaidProperty(id) {
+    const paymentId = paymentPaidId.value;
+
+    axios({
+        method: 'patch',
+        url: `/payments/${ paymentId }`,
+    })
+    .then(() => {
+        paidBtnContainer.innerHTML = '<small class="bill-sent-text"><i class="fas fa-check"></i> Paid</small>'
+    })
+    .catch(err => console.log(err))
+};
 

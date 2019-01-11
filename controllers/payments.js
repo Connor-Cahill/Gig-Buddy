@@ -6,6 +6,7 @@ const wrap = require('../middleware/errorHandler');
 const headerData = require('../middleware/calcHeaderStats');
 const sendCli = require('../middleware/sendClientsList');
 const userAuth = require('../middleware/userAuth');
+const emailer = require('../services/sendgrid-emailer');
 
 module.exports = function(app) {
     //  GET: returns the payments-index (dashboard to view all payments)
@@ -47,6 +48,8 @@ module.exports = function(app) {
         user.billingHistory.unshift(payment);
         await user.save();
 
+        await emailer(user, client, service);
+
         return res.sendStatus(200);
     }));
 
@@ -72,4 +75,12 @@ module.exports = function(app) {
         //  
         return res.redirect('/payments');
     }));
+
+    //  PATCH: changes a Payments paid property from false to true
+    app.patch('/payments/:id', userAuth, wrap(async (req, res) => {
+        const payment = await Payment.findById(req.params.id).exec();
+        payment.set({ paid: true });
+        await payment.save();
+        return res.sendStatus(200);
+    }))
 }
