@@ -40,11 +40,14 @@ require('./controllers/index')(app);
 require('./controllers/clients')(app);
 require('./controllers/services')(app);
 require('./controllers/auth')(app);
+require('./controllers/payments')(app);
 // require('./controllers/user')(app);
 
 
 //  App running locally on localhost:3000
-app.listen(3000, () => console.log('App runnin on 3000'));
+app.listen(3000, () => {
+    console.log('App runnin on 3000');
+});
 
 
 module.exports = app;

@@ -15,6 +15,7 @@ const UserSchema = new Schema({
     admin: { type: Boolean, required: true, default: false },
     clients: [{ type: Schema.Types.ObjectId, ref: 'Client' }],
     services: [{ type: Schema.Types.ObjectId, ref: 'Service' }],
+    billingHistory: [{ type: Schema.Types.ObjectId, ref: 'Payment' }],
 
 })
 

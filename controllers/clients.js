@@ -5,6 +5,7 @@ const wrap = require('../middleware/errorHandler');
 const headerData = require('../middleware/calcHeaderStats');
 const sendCli = require('../middleware/sendClientsList');
 const userAuth = require('../middleware/userAuth');
+const emailer = require('../services/sendgrid-emailer');
 
 module.exports = function(app) {
 
@@ -14,8 +15,9 @@ module.exports = function(app) {
         const totalServices = req.totalServices;
         const monthlyServices = req.monthlyServices;
         const oneTimeServices = req.oneTimeServices;
-        const totalClients = req.totalClients
+        const totalClients = req.totalClients;
         //  setting req.clientIndex for styling purposes
+
         req.clientIndex = true;
 
         const user = await User.findOne({ _id: req.user._id }).populate('clients').populate({
@@ -33,7 +35,7 @@ module.exports = function(app) {
         const user = await User.findOne({ _id: req.user._id }).populate('services').exec();
         const services = user.services;
         res.render('client-form', { services });
-    }))
+    }));
 
     //  GET: returns single client given the ID 
     app.get('/clients/:id', userAuth, sendCli, wrap( async (req, res) => {
@@ -47,9 +49,8 @@ module.exports = function(app) {
         const user = await User.findById(req.user._id).populate('services');
         const services = user.services;
         res.render('clients-show', { client, services, clients, totalServices, totalClients, monthlyServices, oneTimeServices, user: req.user });
-    }))
+    }));
 
-    
     //  POST: creates a new client
     app.post('/clients', userAuth, wrap( async (req, res) => {
         const client = new Client(req.body);
@@ -59,7 +60,6 @@ module.exports = function(app) {
         await user.save();
         res.redirect(`/clients/${client._id}`);
     }));
-
 
     // PUT: edits a client and updates it 
     app.put('/clients/:id', userAuth, wrap(async (req, res) => {
@@ -91,7 +91,15 @@ module.exports = function(app) {
         const client = await Client.findOne({ _id: req.params.id }).exec();
         const service = await Service.findOne({ _id: req.params.serviceId }).exec();
         client.services.pop(indexOf(service));
-    }))
+    }));
+
+    //POST: Route allows users to send emails to clients
+    app.post('/clients/:id/email', userAuth, wrap(async (req, res) => {
+        const client = await Client.findById(req.params.id);
+        const userEmail = req.user.email;
+        const clientEmail = client.email;
+        emailer(userEmail, clientEmail, 'someTemplate')
+    }));
 
 
 }
