@@ -40,7 +40,7 @@ module.exports = function(app) {
         res.redirect('/services');
     }));
 
-    //PUT: updates service details
+    //put: updates service details
     app.put('/services/:id', userAuth, wrap(async (req, res) => {
         const service = await Service.findOne({ _id: req.params.id }).exec();
         service.set(req.body);

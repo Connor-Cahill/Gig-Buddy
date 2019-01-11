@@ -64,8 +64,8 @@ module.exports = function(app) {
         return res.redirect(`/clients/${ clientId }`);
     }));
 
-    //  PATCH: updates a payment
-    app.patch('/payments/:id', userAuth, wrap(async (req, res) => {
+    //  put: updates a payment
+    app.put('/payments/:id', userAuth, wrap(async (req, res) => {
         const payment = await Payment.findById(req.params.id).exec();
 
         payment.set(req.body);

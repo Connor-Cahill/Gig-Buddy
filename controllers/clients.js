@@ -46,9 +46,9 @@ module.exports = function(app) {
         const totalClients = req.totalClients
         const clients = req.clientList;
         const client = await Client.findOne({ _id: req.params.id }).populate('services').populate('billedServices').exec();
-        const user = await User.findById(req.user._id).populate('services');
+        const user = await User.findById(req.user._id).populate('services').exec();
         const services = user.services;
-        res.render('clients-show', { client, services, clients, totalServices, totalClients, monthlyServices, oneTimeServices, user: req.user });
+        res.render('clients-show', { client, services, clients, totalServices, totalClients, monthlyServices, oneTimeServices, user });
     }));
 
     //  POST: creates a new client
@@ -61,7 +61,7 @@ module.exports = function(app) {
         res.redirect(`/clients/${client._id}`);
     }));
 
-    // PUT: edits a client and updates it 
+    // put: edits a client and updates it 
     app.put('/clients/:id', userAuth, wrap(async (req, res) => {
         const client = await Client.findOne({ _id: req.params.id }).exec();
         client.set(req.body);
@@ -78,15 +78,20 @@ module.exports = function(app) {
         res.redirect('/clients');
     }));
 
-    //  PATCH: adds services to client 
-    app.put('/client/:id', userAuth, wrap(async (req, res) => {
+    //  PUT: adds services to client 
+    app.put('/clients/:id/addService', userAuth, wrap(async (req, res) => {
         const client = await Client.findOne({ _id: req.params.id }).exec();
-        client.services.push(req.body)
+        const services = req.body.services;
+        // See if services is an array or single 
+        ((services.constructor === Array) ? services.forEach(function(service) {
+            client.services.unshift(service);
+        }) : client.services.unshift(services));
+        
         await client.save();
         res.redirect(`/clients/${client._id}`);
     }));
 
-    // PATCH: remove a service from a client
+    // PUT: remove a service from a client
     app.put('/clients/:id/service/:serviceId', userAuth, wrap(async (req, res) => {
         const client = await Client.findOne({ _id: req.params.id }).exec();
         const service = await Service.findOne({ _id: req.params.serviceId }).exec();

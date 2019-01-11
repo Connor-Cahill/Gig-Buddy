@@ -9,7 +9,7 @@
     
     <div class="show-services-container">
         <h3 class="show-services-header">Services:</h3>
-        <input type="hidden" id="client-id" name="client" value="{{ client._id }}">
+        <input type="hidden" id="client-id" name="client" value="{{ client._id }}"> 
         <div class="services-table">
             {{#if client.services}}
             {{#each client.services}}
@@ -44,12 +44,23 @@
             </div>
             <div class="divider"></div>
             {{/each}}
+            <div class="dropdown-flex">
+                <button class="add-service-btn" id="toggle-add-service-btn" onclick="toggleAddService()"><i class="fas fa-plus"></i> Add Service</button>
+                <div id="add-service-form-dropdown" class="hidden">
+                    <form class="add-service-to-client" action="/clients/{{ client._id }}/addService?_method=PUT" method="post">
+                        {{#each user.services}}
+                        <span><input type="checkbox" name="services" value="{{ this._id}}">{{ this.name }}</span>
+                        {{/each}}
+                        <button type="submit" class="service-form-btn">Add</button>
+                    </form>
+                </div>
+            </div>
            {{else}}
            <div class="no-service-div">
             <p class="no-services-warning">You don't have any services setup!</p>
             <p class="no-service-byline">Lets set some up now...</p>
             {{#if services}}
-            <form action="/clients/{{client._id}}?_method=PUT" method="post">
+            <form action="/clients/{{client._id}}/addService?_method=PUT" method="post">
                 <label for="services">Services</label><br>
                 {{#each services}}
                 <span><input type="checkbox" name="services" class="form-checkbox" value="{{ this._id }}">{{ this.name }}</span>
