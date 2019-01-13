@@ -2,10 +2,16 @@
 //  Smoother scroll on Learn More Button 
 const learnMoreBtn = document.getElementById('smooth-scroll');
 
-learnMoreBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    learnMoreBtn.scrollIntoView();
-})
+
+// Smoothly scroll to place when nav buttons are pressed
+$(document).ready(function () {
+    $('.landing-learn-more').click(function(event) {
+        event.preventDefault();
+        $('html, body').animate({
+            scrollTop: ($( $.attr(this, 'href') ).offset().top - (20 * (100 / document.documentElement.clientWidth)))
+        }, Math.abs($( $.attr(this, 'href') ).offset().top - $(window).scrollTop()) / 2);
+    });
+});
 
 
 //  Function for info boxes on landing page
