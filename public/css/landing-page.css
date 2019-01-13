@@ -1,0 +1,187 @@
+/*******
+This is the styles sheet for the Gig Buddy Landing page
+*************/
+
+.landing-hero-section {
+    background-image: 
+        linear-gradient(
+            rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0.6)
+            ),
+        url('/assets/DeskBackground.JPG');
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    color: #FBFFF9;
+    height: 500px;
+    min-height: 256px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 24px;
+}
+
+.landing-hero-header {
+    font-size: 5em;
+    margin-bottom: 8px;
+    text-shadow: .5px 1px 0px black;
+    margin-top: 88px;
+}
+
+.landing-hero-byline {
+    font-size: 1.5em;
+}
+
+.landing-hero-btn-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 60%;
+    margin: auto;
+    margin-top: 0px;
+}
+
+.landing-hero-btn {
+    text-decoration: none;
+    transition: all 300ms;
+    padding: 12px;
+    font-size: 1.2em;
+}
+.landing-hero-btn::after {
+    text-decoration: none;
+    color: inherit;
+}
+.landing-hero-btn:hover {
+    cursor: pointer;
+}
+.landing-sign-up {
+    color: #FBFFF9;
+    background-color:#4caf50;
+    border: solid #292f33 thin;
+}
+.landing-sign-up:hover {
+    opacity: 0.7;
+
+}
+.landing-learn-more {
+    background-color: #981D1A;
+    color: #FBFFF9;
+    border: solid #292f33 thin;
+}
+.landing-learn-more:hover {
+    opacity: 0.7;
+}
+
+/****
+Landing Image Content Section Styling
+*****/
+.landing-image-content-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin: auto;
+}
+
+.icon {
+    font-size: 5em;
+    text-shadow: .5px 1px 0px black;
+    color: #4caf50;
+    margin-bottom: 0px;
+}
+.image-content-container {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: auto;
+    text-align: center;
+    height: 400px;
+    margin-bottom: 0px;
+
+}
+
+.image-content-container:hover {
+    background-color: #4caf50;
+    color:#FBFFF9;
+}
+
+.image-content-header {
+    font-size: 1.4em;
+    font-family: 'Staatliches', cursive;
+
+}
+
+.image-content {
+    font-size: 1em;
+    padding: 8px;
+    font-weight: 700;
+    margin-top: -2px;
+    font-weight: 600;
+    color: #FBFFF9;
+
+}
+
+.content-hidden {
+    display: none;
+}
+.container-btn {
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    font-size: 1.1em;
+    transition: all 300ms;
+}
+
+.container-btn:hover {
+    background-color: #4caf50;
+    color:#FBFFF9;
+}
+
+.container-selected {
+    background-color: #4caf50;
+    color:#FBFFF9;
+}
+.white {
+    color: #FBFFF9;
+}
+.div-display {
+    display: block;
+}
+
+/*****
+Divider Section
+******/
+
+.seperator-image {
+    height: 120px;
+    background-color: rgb(39, 105, 0, 0.75);
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h20L0 20z' fill='%234caf50' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}   
+
+/*****
+About Container Styling
+*************/
+.about-gig-buddy-container {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    width: 70%;
+    margin: auto;
+}
+
+.about-gig-buddy-header {
+    font-size: 2.4em;
+}
+
+.about-gig-buddy {
+    font-size: 1.1em;
+    letter-spacing: 2px;
+    margin: 16px;
+}
+
+

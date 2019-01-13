@@ -8,7 +8,8 @@ body {
 }
 
 h1, h2, h3 {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Cabin', sans-serif;
+
 }
 
 p {
@@ -186,7 +187,8 @@ Hero Section Partial Styling:
     width: 40%;
     align-self: flex-end;
     font-size: .75em;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Cabin', sans-serif;
+
     color: #FBFFF9;
     border: solid #FBFFF9;
     background: none;
@@ -367,7 +369,6 @@ Main Nav Partial Styling:
     display: flex;
     flex-direction: row;
     justify-content: center;
-    
 }
 
 .main-nav-btn {
@@ -485,7 +486,8 @@ Clients Show Styling:
 .send-bill {
     background: none;
     color: #981D1A;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Cabin', sans-serif;
+
     border: none;
     padding: 8px;
     font-size: 1.2em;
