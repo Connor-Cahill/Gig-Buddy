@@ -176,6 +176,10 @@ About Container Styling
 
 .about-gig-buddy-header {
     font-size: 2.4em;
+    color: #981D1A;
+    text-shadow: .5px 1px 0px #981D1A;
+
+    
 }
 
 .about-gig-buddy {
