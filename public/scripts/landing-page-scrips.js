@@ -1,3 +1,13 @@
+
+//  Smoother scroll on Learn More Button 
+const learnMoreBtn = document.getElementById('smooth-scroll');
+
+learnMoreBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    learnMoreBtn.scrollIntoView();
+})
+
+
 //  Function for info boxes on landing page
 const containerA = document.getElementById('container-a');
 const containerB = document.getElementById('container-b');
@@ -21,7 +31,6 @@ const setupToggleListener = function setsUpEListenerForStyles(container, icon, d
         icon.classList.remove('white')
     });
 }
-
 
 setupToggleListener(containerA, iconA, divA);
 setupToggleListener(containerB, iconB, divB);
