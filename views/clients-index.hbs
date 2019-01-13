@@ -4,6 +4,7 @@
 </div>
 
 <div class="clients-index-container">
+    {{#if clients}}
     <div class="btn-flex">
         <a href="/clients/new" class="new-client-btn">Add Client</a>
     </div>
@@ -30,7 +31,15 @@
             </a>
         {{/each}}
         </div>
-        
+        {{else}}
+        <div class="no-service-div">
+            <p class="no-services-warning">You don't have any services setup!</p>
+            <p class="no-service-byline">Lets set some up now...</p>
+            <div class="no-client-btn-flex">
+                <a class="no-client-add-btn" href="/clients/new">Add Clients</a>
+            </div>
+        </div>
+        {{/if}}
     
 </div>
 
