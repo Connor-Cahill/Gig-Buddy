@@ -3,7 +3,11 @@
     <h1 class="landing-hero-header">Welcome To Gig Buddy</h1>
     <h3 class="landing-hero-byline">Helping Freelancers Get Organized, Get Paid, And Conquer The Gig Economy</h3>
     <div class="landing-hero-btn-container">
+            {{#if user}}
+            <a href="/clients" class="landing-hero-btn landing-sign-up">Go To Dashboard</a>
+            {{else}}
             <a href="/sign-up" class="landing-hero-btn landing-sign-up">Sign-up</a>
+            {{/if}}
             <a href="#gig-container" id="smooth-scroll" class="landing-hero-btn landing-learn-more">Learn More</a>
     </div>
 </div>
