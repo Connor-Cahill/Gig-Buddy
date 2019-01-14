@@ -278,9 +278,8 @@ Images and text
 .texts-for-image {
     display: flex;
     flex-direction: column;
-    margin-left: 8px;
-    padding: 24px;
-    margin: 24px;
+    margin-left: 16px;
+    margin-right: 16px
 
 }
 
@@ -301,16 +300,16 @@ Images and text
 }
 
 .client-overview-text {
-    font-size: 1em;
+    font-size: .9em;
     color: #292f33;
-    margin: 8px 16px 8px 16px;
+    
 }
 
 .left-image {
-    margin-right: 48px;
+    margin-right: 16px;
 }
 .right-image {
-    margin-left: 48px;
+    margin-left: 16px;
 }
 
 /******
