@@ -1,3 +1,7 @@
+p {
+    color: #292f33;
+}
+
 /*******
 This is the styles sheet for the Gig Buddy Landing page
 *************/
@@ -244,6 +248,7 @@ About Container Styling
     margin: auto;
 }
 
+
 .about-gig-buddy-header {
     font-size: 2.4em;
     color: #981D1A;
@@ -259,3 +264,38 @@ About Container Styling
 }
 
 
+
+/******
+Images and text
+***********/
+.image-with-desc-container {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.texts-for-image {
+    display: flex;
+    flex-direction: column;
+    margin-left: 8px;
+    padding: 8px;
+}
+
+
+.client-overview-image {
+    height: 400px;
+    border: solid #292f33 thin;
+    margin-top: 32px;
+}
+
+.client-overview-header {
+    color: #981D1A;
+    margin-bottom: 0px;
+    font-size: 2.2em;
+    font-family: 'Staatliches', cursive;
+}
+
+.client-overview-text {
+    font-size: 1.1em;
+    color: #292f33;
+}
