@@ -299,3 +299,21 @@ Images and text
     font-size: 1.1em;
     color: #292f33;
 }
+
+/******
+FOOOTER
+************/
+
+.footer-section {
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    text-align: center;
+    margin-top: 48px;
+    background-color: #4caf50;
+}
+
+.footer-text {
+    font-size: .75em;
+    color: #292f33;
+}
