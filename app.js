@@ -41,6 +41,7 @@ require('./controllers/clients')(app);
 require('./controllers/services')(app);
 require('./controllers/auth')(app);
 require('./controllers/payments')(app);
+require('./controllers/subscribers')(app);
 // require('./controllers/user')(app);
 
 

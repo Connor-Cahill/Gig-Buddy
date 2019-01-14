@@ -42,5 +42,25 @@ setupToggleListener(containerA, iconA, divA);
 setupToggleListener(containerB, iconB, divB);
 setupToggleListener(containerC, iconC, divC);
 
+//  Post Subscriber to backend
+const subInput = document.getElementById('email-sub-input');
+const subBtn = document.getElementById('email-sub-btn');
+const seperatorDiv = document.querySelector('.seperator-div');
 
+
+const postSub = function postsToEmailList() {
+    const sub = {
+        email: subInput.value,
+    };
+    console.log(sub);
+    axios({
+        method: 'post',
+        url: '/subscribe',
+        data: sub,
+    })
+    .then(() => {
+        seperatorDiv.innerHTML = '<h3 class="landing-subscribe-header">Subscribe For Product Updates</h3><p class="seperator-icon"><i class="far fa-envelope"></i></p><label for="subscribe" class="sub-label">Subscribe</label><p class="subscribed">Thank you for subscribing!</p>';
+    }).catch(err => console.log(err))
+
+}
 
