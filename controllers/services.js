@@ -15,20 +15,25 @@ module.exports = function(app) {
         const oneTimeServices = req.oneTimeServices;
         const totalClients = req.totalClients
         const clients = req.clientList;
+        const totalEarned = req.totalEarned;
         //  setting req.serviceIndex for styling purposes
         req.serviceIndex = true;
+
         const user = await User.findOne({ _id: req.user._id }).populate('services').exec();
         const services = user.services;
-        res.render('services-index', { services, clients, totalServices, totalClients, monthlyServices, oneTimeServices, serviceIndex: req.serviceIndex, user: req.user });
+        res.render('services-index', { services, totalEarned, clients, totalServices, totalClients, monthlyServices, oneTimeServices, serviceIndex: req.serviceIndex, user: req.user });
     }));
 
     //POST: creates a new Service LATER: will append to user:
     app.post('/services', userAuth, wrap(async (req, res) => {
+        //  creates new service
         const service = new Service(req.body);
         await service.save();
+        //  gives new service to the user 
         const user = await User.findOne({ _id: req.user._id }).exec();
         user.services.unshift(service._id);
         await user.save();
+
         res.redirect('/services');
     }));
 
@@ -36,6 +41,7 @@ module.exports = function(app) {
     app.delete('/services/:id', userAuth, wrap(async (req, res) => {
         await Service.findOneAndRemove({ _id: req.params.id }).exec();
         const user = await User.findOne({ _id: req.user._id }).exec();
+       //   removes the service from the user.services array 
         user.services.pop(user.services.indexOf(req.params.id));
         res.redirect('/services');
     }));

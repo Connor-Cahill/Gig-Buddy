@@ -49,6 +49,9 @@ module.exports = wrap(async (req, res, next) => {
         oneTimeServices += oneTime.length;
     });
 
+    //  gets the total earned for user
+    user.totalEarned = req.totalEarned;
+
     req.totalServices = totalServices;
     req.monthlyServices = monthlyServices;
     req.oneTimeServices = oneTimeServices;

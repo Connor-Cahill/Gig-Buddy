@@ -8,14 +8,16 @@ const UserSchema = new Schema({
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
     email: { type: String, required: true, unique: true },
-    profileImage: { type: String, required: false },
+    profileImage: { type: String, default: null },
     phoneNumber: { type: String, required: true },
     venmoUsername: { type: String, required: false },
     password: { type: String, required: true },
     admin: { type: Boolean, required: true, default: false },
     clients: [{ type: Schema.Types.ObjectId, ref: 'Client' }],
     services: [{ type: Schema.Types.ObjectId, ref: 'Service' }],
-    billingHistory: [{ type: Schema.Types.ObjectId, ref: 'Payment' }],
+    openBills: [{ type: Schema.Types.ObjectId, ref: 'Payment' }],
+    paidBills: [{ type: Schema.Types.ObjectId, ref: 'Payment' }],
+    totalEarned: { type: Number, default: 0 },
 
 })
 

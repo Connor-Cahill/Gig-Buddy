@@ -4,10 +4,10 @@
 </div>
 
 <div class="clients-index-container">
-    {{#if payments}}
+    {{#if allPayments}}
         <h2 class="all-services-header">Payments Feed:</h2>
         <div class="service-index-table">
-            {{#each payments}}
+            {{#each openPayments}}
             <div class="row-flex">
                 <p class="service-table-name"><b>${{ this.amount }}</b></p>
                 <p class="service-table-price"><b>For:</b> {{ this.service.name }}</p>
@@ -15,6 +15,18 @@
                 <input type="hidden" name="payment" id="payment-paid-id" value="{{this._id}}">
                 <div id="paid-btn-container">
                     <button class="paid-btn" onclick="updatePayment()">Payment Recieved?</button>
+                </div>
+            </div>
+            <div class="divider"></div>
+            {{/each}}
+            {{#each closedPayments}}
+            <div class="row-flex">
+                <p class="service-table-name"><b>${{ this.amount }}</b></p>
+                <p class="service-table-price"><b>For:</b> {{ this.service.name }}</p>
+                <p class="service-table-price"><b>Client To Pay:</b> {{ this.client.name }}</p>
+                <input type="hidden" name="payment" id="payment-paid-id" value="{{this._id}}">
+                <div id="paid-btn-container" class="is-paid-div">
+                    <small class="bill-sent-text"><i class="fas fa-check"></i> Paid</small>
                 </div>
             </div>
             <div class="divider"></div>

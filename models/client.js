@@ -8,8 +8,10 @@ const ClientSchema = new Schema ({
     phoneNumber: { type: String, required: true },
     services: [{ type: Schema.Types.ObjectId, ref: 'Service'}],
     billedServices: [{ type: Schema.Types.ObjectId, ref: 'Service' }],
-    payments: [{ type: Schema.Types.ObjectId, ref: 'Payment' }],
-})
+    openPayments: [{ type: Schema.Types.ObjectId, ref: 'Payment' }],
+    closedPayments: [{ type: Schema.Types.ObjectId, ref: 'Payment'}],
+    totalPaid: { type: Number, default: 0},
+});
 
 
 

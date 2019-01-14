@@ -16,6 +16,7 @@ module.exports = function(app) {
         const monthlyServices = req.monthlyServices;
         const oneTimeServices = req.oneTimeServices;
         const totalClients = req.totalClients;
+        const totalEarned = req.totalEarned;
         //  setting req.clientIndex for styling purposes
 
         req.clientIndex = true;
@@ -27,7 +28,7 @@ module.exports = function(app) {
             }
         }).exec();
         const clients = user.clients;
-        res.render('clients-index', { clients, totalServices, monthlyServices, oneTimeServices, totalClients, clientIndex: req.clientIndex, user: req.user });
+        res.render('clients-index', { clients, totalServices, totalEarned, monthlyServices, oneTimeServices, totalClients, clientIndex: req.clientIndex, user: req.user });
     }));
 
     //  GET: renders the clients form and sends service data 
@@ -38,17 +39,20 @@ module.exports = function(app) {
     }));
 
     //  GET: returns single client given the ID 
-    app.get('/clients/:id', userAuth, sendCli, wrap( async (req, res) => {
+    app.get('/clients/:id', userAuth, headerData, sendCli, wrap( async (req, res) => {
         //below vars are necessary for sending the data displayed in header
         const totalServices = req.totalServices;
         const monthlyServices = req.monthlyServices;
         const oneTimeServices = req.oneTimeServices;
         const totalClients = req.totalClients
         const clients = req.clientList;
+        const totalEarned = req.totalEarned;
+
+
         const client = await Client.findOne({ _id: req.params.id }).populate('services').populate('billedServices').exec();
         const user = await User.findById(req.user._id).populate('services').exec();
         const services = user.services;
-        res.render('clients-show', { client, services, clients, totalServices, totalClients, monthlyServices, oneTimeServices, user });
+        res.render('clients-show', { client, totalEarned, services, clients, totalServices, totalClients, monthlyServices, oneTimeServices, user });
     }));
 
     //  POST: creates a new client
@@ -82,6 +86,7 @@ module.exports = function(app) {
     app.put('/clients/:id/addService', userAuth, wrap(async (req, res) => {
         const client = await Client.findOne({ _id: req.params.id }).exec();
         const services = req.body.services;
+
         // See if services is an array or single 
         ((services.constructor === Array) ? services.forEach(function(service) {
             client.services.unshift(service);

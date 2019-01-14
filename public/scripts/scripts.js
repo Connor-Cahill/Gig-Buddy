@@ -33,8 +33,9 @@ const postPayment = function postsPaymentWithServiceInReq(id) {
         data: paymentData,
     })
     .then(() => {
+        alert('Payment Request sent to client\'s email!');
         billBtnContainer.innerHTML = '<small class="bill-sent-text"><i class="fas fa-check"></i> Bill Sent</small>'
-    })
+    });
 }
 
 

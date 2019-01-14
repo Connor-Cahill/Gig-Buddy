@@ -9,7 +9,11 @@
             <button class="pay-request-btn">Send Request</button>
         </div>
         <div class="image-name-section b">
+            {{#if user.profileImage}}
+            <img src="{{ user.profileImage }}" alt="User's profile picture">
+            {{else}}
             <img src="/assets/DefaultProPic.png" alt="profile picture" class="profile-pic">
+            {{/if}}
             <p class="hero-username">{{ user.firstName }} {{ user.lastName }}</p>
             <p class="hero-client-count">Client Count: <i>{{ totalClients }}</i></p>
         </div>

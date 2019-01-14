@@ -49,14 +49,14 @@ Auth Forms Styling:
 }
 
 .sign-in-btn {
-    width: 80%;
+    width: 95%;
     color: #4caf50;
     border: solid #4caf50;
     background: none;
     transition: all 300ms;
     font-size: 1.1em;
     margin: auto;
-    margin-right: 104px;
+    /* margin-right: 104px; */
 }
 
 .sign-in-btn:hover {
@@ -590,6 +590,13 @@ Form Styling
     width: 100%;
 }
 
+.client-con-input {
+    width: 30%;
+}
+.client-phone-in {
+    width: 20%;
+}
+
 .client-service-input {
     margin-bottom: 40px;
 }
@@ -647,10 +654,13 @@ Form Styling
     width: 30%;
 }
 .contact-in {
-    width: 34%;
+    width: 30%;
 }
 .venmo-in {
     width: 70%;
+}
+.sign-in-inp {
+    width: 30%;
 }
 
 .no-services-form-btn-div {
@@ -830,6 +840,10 @@ Payments Index Styling
 .pay-warning-link:hover {
     color: white;
     text-decoration: none;
+}
+
+.is-paid-div {
+    padding-top: 16px;
 }
 
 .paid-btn {

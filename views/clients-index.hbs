@@ -20,7 +20,7 @@
                         <li>{{ this.name }}</li>
                         {{/each}}
                     </ul>
-                    <p class="client-total-billed">Total Billed: $##</p>
+                    <p class="client-total-billed">Total Paid: ${{ this.totalPaid }}</p>
                     {{else}}
                     <div class="setup-clients-container">
                         <small class="no-client-services">Looks like you don't have any services setup for this client ...</small>
