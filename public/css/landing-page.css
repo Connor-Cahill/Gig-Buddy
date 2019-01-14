@@ -283,7 +283,7 @@ Images and text
 
 
 .client-overview-image {
-    height: 400px;
+    height: 352px;
     border: solid #292f33 thin;
     margin-top: 32px;
 }
@@ -296,7 +296,7 @@ Images and text
 }
 
 .client-overview-text {
-    font-size: 1.1em;
+    font-size: 1em;
     color: #292f33;
 }
 
