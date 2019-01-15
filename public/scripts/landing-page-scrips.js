@@ -37,10 +37,12 @@ const setupToggleListener = function setsUpEListenerForStyles(container, icon, d
         icon.classList.remove('white')
     });
 }
+if (containerA) {
+    setupToggleListener(containerA, iconA, divA);
+    setupToggleListener(containerB, iconB, divB);
+    setupToggleListener(containerC, iconC, divC);
+}
 
-setupToggleListener(containerA, iconA, divA);
-setupToggleListener(containerB, iconB, divB);
-setupToggleListener(containerC, iconC, divC);
 
 //  Post Subscriber to backend
 const subInput = document.getElementById('email-sub-input');

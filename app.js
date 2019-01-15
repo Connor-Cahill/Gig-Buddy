@@ -42,7 +42,7 @@ require('./controllers/services')(app);
 require('./controllers/auth')(app);
 require('./controllers/payments')(app);
 require('./controllers/subscribers')(app);
-// require('./controllers/user')(app);
+require('./controllers/users')(app);
 
 
 //  App running locally on localhost:3000

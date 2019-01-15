@@ -1,0 +1,43 @@
+<div class="header-and-edit-btn">
+        <h1 class="profile-header">User Profile: </h1>
+        <button class="edit-profile-btn" onclick="toggleEditProfile()" id="edit-profile">Edit</button>
+        <input type="hidden" id="hidden-uid" value="{{ user._id }}">
+    </div>
+<div class="user-info-container">  
+    <div class="profile-image-container indent">
+        {{#if user.profileImage}}
+        <img src="{{user.profileImage}}" alt="User's profile picture">
+        {{else}}
+        <img src="/assets/DefaultProPic.png" alt="profile picture" class="profile-pic">
+        {{/if}}
+        <div class="hidden-edit-profile-image" id="toggle-edit-profile-image">
+            <label for="profileImage" class="image-url-label">Image Url: </label>
+            <input class="user-profile-image-input" id="profile-image-input" name="profileImage" type="text" {{#if user.profileImage}}value="{{ user.profileImage}}"{{else}}placeholder="enter an image url here"{{/if}}>
+        </div>
+    </div>
+    <div class="contact-info-container indent">
+        <div class="name-info" id="name-info">
+            <p class="users-first-name" id="firstName-p">{{user.firstName}}</p>
+            <p class="users-last-name" id="lastName-p">{{ user.lastName }}</p>
+        </div>
+        <div class="hidden-name-info-inputs indent" id="name-info-inputs">
+            <input type="text" id="value-firstName-input" value="{{ user.firstName}}" name="firstName" class="editing-name-info-input">
+            <input type="text" class="editing-name-info-input" id="value-lastName-input" name="lastName" value="{{ user.lastName}}">
+        </div>
+        <div class="email-phone-info indent" id="email-phone-info">
+            <p class="users-email" id="email-p">{{ user.email }}</p>
+            <p class="users-phone" id="phoneNumber-p">{{ user.phoneNumber }}</p>
+            <p class="users-venmo" id="venmo-p">{{ user.venmoUsername }}</p>
+        </div>
+        <div class="hidden-email-info-inputs" id="email-info-inputs">
+            <input type="text" id="value-email-input" name="email" class="email-info-input" value="{{ user.email }}">
+            <input type="text" id="value-phoneNumber-input" name="phoneNumber" class="email-info-input" value="{{ user.phoneNumber }}">
+            {{#if user.venmoUsername}}
+            <input type="text" id="value-venmoUsername-input" name="venmoUsername" class="email-info-input" value="{{ user.venmoUsername }}">
+            {{/if}}
+        </div>
+        <div class="hidden-save-btn-container indent" id="save-btn-toggle-div">
+            <button class="save-new-info-btn" id="save-info" onclick="editUserInfo()">Save</button>
+        </div>
+    </div>
+</div>
