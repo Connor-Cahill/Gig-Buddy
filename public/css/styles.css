@@ -456,8 +456,12 @@ Clients Show Styling:
     flex-direction: column;
     margin: auto;
     margin-top: 64px;
-    width: 75%;
+    width: 70%;
 
+}
+
+.clients-show-contact-info {
+    width: 80%;
 }
 
 .client-show-name {
@@ -470,7 +474,8 @@ Clients Show Styling:
 
 .client-show-description {
     margin-top: 4px;
-    font-size: 1.1em;
+    font-size: .8em;
+
 }
 
 .show-services-header {
@@ -552,9 +557,9 @@ Clients Show Styling:
     'a a a b b b'
     'a a a b b b'
     'a a a b b b'
-    'c c c . . .'
-    'c c c . . .'
-    'c c c . . .';
+    'c c c d d d'
+    'c c c d d d'
+    'c c c d d d';
     grid-gap: 16px;
 
 
@@ -563,15 +568,28 @@ Clients Show Styling:
 .snap-a { grid-area: a; }
 .snap-b { grid-area: b; }
 .snap-c { grid-area: c; }
+.snap-d { grid-area: d; }
+
+.snapshot-title {
+    margin-top: 48px;
+    align-self: center;
+}
+
+
 
 .snapshot-item {
     padding: 16px;
     padding-top: 1px;
+    display: flex;
+    flex-direction: column;
     padding-left: 2px;
     text-align: center;
     color: black;
     font-weight: bold;
 
+}
+.hero-list {
+    list-style: none;
 }
 
 .snapshot-item {
