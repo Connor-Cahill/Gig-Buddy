@@ -48,11 +48,23 @@ module.exports = function(app) {
         const clients = req.clientList;
         const totalEarned = req.totalEarned;
 
+        
 
-        const client = await Client.findOne({ _id: req.params.id }).populate('services').populate('billedServices').exec();
+        const client = await Client.findOne({ _id: req.params.id }).populate('services').populate('billedServices').populate('openPayments').exec();
         const user = await User.findById(req.user._id).populate('services').exec();
         const services = user.services;
-        res.render('clients-show', { client, totalEarned, services, clients, totalServices, totalClients, monthlyServices, oneTimeServices, user });
+        //  getting data for client snapshot
+        let totalOwes = 0;
+        client.openPayments.forEach((payment) => {
+            totalOwes += payment.amount;
+        });
+        const servicesCompleted = client.billedServices.length || 0;
+        
+
+
+
+
+        res.render('clients-show', { client, totalOwes, servicesCompleted, totalEarned, services, clients, totalServices, totalClients, monthlyServices, oneTimeServices, user });
     }));
 
     //  POST: creates a new client

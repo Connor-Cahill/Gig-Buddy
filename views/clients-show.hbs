@@ -5,7 +5,38 @@
 <a href="/clients" class="back-btn">Back</a>
 <div class="clients-show-container">
     <h2 class="client-show-name">{{ client.name }}</h2>
-    <p class="client-show-description">{{ client.description }}</p>
+    <div class="clients-show-flex-row">
+        <div class="clients-show-contact-info">
+            <p class="client-show-description">{{ client.description }}</p>
+            <span class="clients-show-info-span">
+                <p class="clients-show-info-label">Email: </p>
+                <p class="clients-show-info">{{ client.email }}</p>
+            </span>
+            <span class="clients-show-info-span">
+                <p class="clients-show-info-label">Phone #:</p>
+                <p class="clients-show-info">{{ client.phoneNumber }}</p>
+            </span>
+        </div>
+        <div class="client-quick-snippets">
+            <div class="snapshot-grid">
+                <div class="snapshot-item snap-a">
+                    <p class="snapshot-header">Total Paid: </p>
+                    <p class="snapshot-data">${{ client.totalPaid }}</p>
+                </div>
+                <div class="snapshot-item snap-b">
+                    <p class="snapshot-header">Currently Owes: </p>
+                    <p class="snapshot-data">${{ totalOwes }}</p>
+                </div>
+                <div class="snapshot-item snap-c">
+                    <p class="snapshot-header">Services Completed: </p>
+                    <p class="snapshot-data">{{ servicesCompleted }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+
     
     <div class="show-services-container">
         <h3 class="show-services-header">Services:</h3>
@@ -17,7 +48,7 @@
                 <p class="service-table-name"><b>{{ this.name }}</b></p>
                 <p class="service-table-price"><b>Service Price:</b>  ${{ this.pricing }}</p>
                  {{#if this.reoccurring}}
-                <p class="service-table-reoccurring"><b>reoccurring Payments:</b> Yes</p>
+                <p class="service-table-reoccurring"><b>Reoccurring Payments:</b> Yes</p>
                 {{else}}
                 <p class="service-table-reoccurring"><b>reoccurring Payments:</b> No</p>
                 {{/if}}

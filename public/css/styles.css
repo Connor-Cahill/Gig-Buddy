@@ -4,11 +4,12 @@ body {
     margin-top: 0;
     padding-top: 0;
     margin: 0px;
-    font-family: 'Roboto Mono', monospace;
+    font-family: 'Montserrat', sans-serif;
+
 }
 
 h1, h2, h3 {
-    font-family: 'Cabin', sans-serif;
+font-family: 'Lato', sans-serif;
 
 }
 
@@ -189,8 +190,7 @@ Hero Section Partial Styling:
     width: 40%;
     align-self: flex-end;
     font-size: .75em;
-    font-family: 'Cabin', sans-serif;
-
+    font-family: 'Lato', sans-serif;
     color: #FBFFF9;
     border: solid #FBFFF9;
     background: none;
@@ -233,13 +233,23 @@ Hero Section Partial Styling:
 
 .service-snippet-header {
     color: #FBFFF9;
-    font-size: 1.5em;
-    font-weight: 800;
+    font-size: 1.3em;
+    font-weight: 600;
     margin-bottom: 0px;
 }
 
+
 .service-snippet-small {
     color: #FBFFF9;
+    margin-top: 2px;
+}
+
+.special {
+    letter-spacing: 4px;
+    color: rgba(152, 28, 26, 0.9);
+    font-weight: 800;
+    font-family: 'Montserrat', sans-serif;
+ 
 }
 
 
@@ -512,10 +522,86 @@ Clients Show Styling:
 
 }
 
+.clients-show-flex-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 24px;
+}
+
+.clients-show-info-span {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+.clients-show-info-label {
+    margin-right: 16px;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+
+.snapshot-grid {
+    display: grid;
+    padding: 8px;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-areas: 
+    'a a a b b b'
+    'a a a b b b'
+    'a a a b b b'
+    'c c c . . .'
+    'c c c . . .'
+    'c c c . . .';
+    grid-gap: 16px;
+
+
+
+}
+.snap-a { grid-area: a; }
+.snap-b { grid-area: b; }
+.snap-c { grid-area: c; }
+
+.snapshot-item {
+    padding: 16px;
+    padding-top: 1px;
+    padding-left: 2px;
+    text-align: center;
+    color: black;
+    font-weight: bold;
+
+}
+
+.snapshot-item {
+    background-color: rgba(76, 175, 79, 0.342);
+    border: solid #4caf50 thin;
+    width: 90%;
+
+}
+
+.snapshot-header {
+    font-size: 0.75em;
+    font-weight: 300;
+    margin-top: 2px;
+    text-align: left;
+}
+.snapshot-data {
+    font-size: 1.6em;
+    font-weight: 700;
+    color: #292f33;
+    /* text-shadow: 2px 1px 1px #292f33; */
+    font-family: 'Montserrat', sans-serif;
+
+
+}
+
+
 .send-bill {
     background: none;
     color: #981D1A;
-    font-family: 'Cabin', sans-serif;
+font-family: 'Lato', sans-serif;
 
     border: none;
     padding: 8px;
@@ -567,7 +653,8 @@ Form Styling
 .form-input {
     font-size: 1em;
     padding: 4px;
-    font-family: 'Roboto Mono', monospace;
+    font-family: 'Montserrat', sans-serif;
+
     margin-bottom: 32px;
     border: none;
     border: none;
@@ -699,7 +786,8 @@ Service Form Styling
 .service-input {
     border: none;
     border-bottom: solid lightgray thin;
-    font-family: 'Roboto Mono', monospace;
+    font-family: 'Montserrat', sans-serif;
+
     font-size: 1em;
 }
 
@@ -1021,7 +1109,8 @@ User Profile Styling
     width: 20%;
     text-align: center;
     font-weight: bold;
-    font-family: 'Roboto Mono', monospace;
+    font-family: 'Montserrat', sans-serif;
+
 
 }
 
@@ -1038,7 +1127,8 @@ User Profile Styling
 .email-info-input {
     font-size: 1em;
     padding: 2px;
-    font-family: 'Roboto Mono', monospace;
+    font-family: 'Montserrat', sans-serif;
+
     text-align: center;
     margin-top: 32px;
 }
