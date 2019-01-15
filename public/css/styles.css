@@ -446,6 +446,9 @@ Main Nav Partial Styling:
     color: inherit;
 }
 
+.main-nav-pay {
+    padding-right: 8px;
+}
 
 /**********
 Clients Show Styling:
@@ -457,7 +460,6 @@ Clients Show Styling:
     margin: auto;
     margin-top: 64px;
     width: 70%;
-
 }
 
 .clients-show-contact-info {
