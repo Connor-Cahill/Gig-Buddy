@@ -28,6 +28,10 @@ label {
     font-weight: bold;
 }
 
+.seperate {
+    margin-right: 8px;
+}
+
 /********
 Auth Forms Styling:
 **************/
@@ -1128,10 +1132,12 @@ User Profile Styling
     margin-right: 32px;
     width: 20%;
     text-align: center;
+    border: solid lightgray thin;
     font-weight: bold;
     font-family: 'Montserrat', sans-serif;
-
-
+}
+.editing-name-info-input:focus {
+    outline: none;
 }
 
 .hidden-email-info-inputs {
@@ -1148,9 +1154,12 @@ User Profile Styling
     font-size: 1em;
     padding: 2px;
     font-family: 'Montserrat', sans-serif;
-
     text-align: center;
+    border: solid lightgray thin;
     margin-top: 32px;
+}
+.email-info-input:focus {
+    outline: none;
 }
 
 .hide-this-div {
