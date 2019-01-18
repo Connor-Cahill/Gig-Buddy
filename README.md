@@ -26,7 +26,7 @@ Gig Buddy is a tool developed to help make freelancers work flow more effecient 
 The **clients overview** portion of the dashboard allows users to get a quick snapshot of how many clients they have, what services they are providing for each client, and the total compensation earned from each client.
 
 ### Services
-![Gif of services dashboard](https://media.giphy.com/media/cJzi4ZUxuhQq0sThkm/giphy.gif)
+![Gif of services dashboard](public/assets/Screen&#32;Shot&#32;2019-01-17&#32;at&#32;9.49.22&#32;PM.png)
 
 The **services dashboard** allows users to store and organize their services in one place. It also holds userful information on pricing and whether it is reocurring service or not.
 
