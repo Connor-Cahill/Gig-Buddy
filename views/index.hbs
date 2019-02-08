@@ -1,77 +1,54 @@
-
-<div class="landing-hero-section">
-    <h1 class="landing-hero-header">Welcome To Gig Buddy</h1>
-    <h3 class="landing-hero-byline">Helping Freelancers Get Organized, Get Paid, And Conquer The Gig Economy</h3>
-    <div class="landing-hero-btn-container">
-            {{#if user}}
-            <a href="/clients" class="landing-hero-btn landing-sign-up">Go To Dashboard</a>
-            {{else}}
-            <a href="/sign-up" class="landing-hero-btn landing-sign-up">Sign Up</a>
-            {{/if}}
-            <a href="#gig-container" id="smooth-scroll" class="landing-hero-btn landing-learn-more">Learn More</a>
+<div class="row">
+    <div class="col-12">
+        <div class="jumbotron home-bg" style="text-align:center">
+            <h1 class="display-4" style="color:#FBFFF9; font-weight:800;">Welcome To Gig Buddy</h1>
+            <p class="lead" style="color:#FBFFF9">Helping Freelancers Get Organized, Get Paid, And Conquer The Gig Economy</p>
+            <hr class="my-4">
+            <p class="lead">
+                {{#unless user}}
+                <a class="btn btn-outline-success right-align" href="/sign-in" role="button">Sign In</a>
+                <a class="btn btn-raised btn-success right-align" href="/sign-up" role="button">Create Account</a>
+                {{else}}
+                <a class="btn btn-outline-success right-align btn-lg" href="/clients" role="button">Dashboard</a>
+                {{/unless}}
+            </p>
+        </div>
     </div>
-</div>
-<div class="landing-image-content-section">
-        <div class="image-content-container" id="container-a">
-            <p class="icon" id="icon-a"><i class="fas fa-laptop"></i></p>
-            <h3 class="image-content-header">Stay Organized</h3>
-            <div class="content-hidden" id="div-a">
-                <p class="image-content">Gig Buddy makes it easy to get organized by allowing you to easily track info about your clients and services. Store useful information such as pricing, details, contanct info , etc.</p>
+    <div class="col-12" style="display: flex; flex-direction:row; justify-content:space-between;">
+        <center class="col-4">
+        <div class="card text-white bg-success mb-3" style="max-width: 18rem; height:300px;">
+            <div class="card-header"><p style="text-align:center; color:#FBFFF9; font-size:2em;"><i class="fas fa-laptop" style="text-align:center; font-size:2em;"></i></p></div>
+            <div class="card-body">
+                <h5 class="card-title">Stay Organized</h5>
+                <p class="card-text" style="color:#FBFFF9;">Gig Buddy makes it easy to get organized by allowing you to easily track info about your clients and services. Store useful information such as pricing, details, contanct info , etc.</p>
             </div>
         </div>
-        <div class="image-content-container" id="container-b">
-            <p class="icon" id="icon-b"><i class="fas fa-hand-holding-usd"></i></p>
-            <h3 class="image-content-header">Get Paid</h3>
-            <div class="content-hidden" id="div-b">
-                <p class="image-content">We make payment simple with our one click payment request feature. Allowing you to send email payment requests from within our app.</p>
+        </center>
+        <center class="col-4">
+            <div class="card text-white bg-success mb-3" style="max-width: 18rem; height:300px;">
+                <div class="card-header"><p style="text-align:center; color:#FBFFF9; font-size:2em;"><i class="fas fa-hand-holding-usd" style="text-align:center; font-size:2em;"></i></p></div>
+                <div class="card-body">
+                    <h5 class="card-title">Get Paid</h5>
+                    <p class="card-text" style="color:#FBFFF9;">We make payment simple with our one click payment request feature. Allowing you to send email payment requests from within our app.</p>
+                </div>
             </div>
-        </div>
-        <div class="image-content-container" id="container-c">
-            <p class="icon" id="icon-c"><i class="fas fa-chart-line"></i></p>
-            <h3 class="image-content-header">Track Progress</h3>
-            <div class="content-hidden" id="div-c">
-                <p class="image-content">Gig Buddy helps you measure progress by keeping track on all of your billing and services history for clients.</p>
+        </center>
+        <center class="col-4">
+            <div class="card text-white bg-success mb-3" style="max-width: 18rem; height:300px;">
+                <div class="card-header"><p style="text-align:center; color:#FBFFF9; font-size:2em;"><i class="fas fa-chart-line" style="text-align:center; font-size:2em;"></i></p></div>
+                <div class="card-body">
+                    <h5 class="card-title">Track Progress</h5>
+                    <p class="card-text" style="color:#FBFFF9;">Gig Buddy helps you measure progress by keeping track on all of your billing and services history for clients.</p>
+                </div>
             </div>
-        </div>
-</div>
-<div class="seperator-image">
-    <div class="seperator-div">
-        <h3 class="landing-subscribe-header">Subscribe For Product Updates</h3>
-        <p class="seperator-icon"><i class="far fa-envelope"></i></p>
-        <label for="subscribe" class="sub-label">Subscribe</label>
-        <input type="text" name="subscribe" id="email-sub-input" class="email-sub-input" placeholder="Whats your email?">
-        <button class="email-sub-btn" id="email-sub-btn" onclick="postSub()"><i class="fas fa-check-square"></i></button>
+        </center>
+    </div>
+    <div class="col-12 bg-success" style="opacity:0.8">
+        <center class="input-group col-8 mb-3">
+            <div class="input-group-prepend">
+                <button class="btn btn-outline-primary m-2" type="button" style="color:#FBFFF9; border-color:#FBFFF9;">Subscribe</button>
+            </div>
+            <input type="text" class="form-control sub-input" style="color:#FBFFF9; font-size:1.2em; border-color:#FBFFF9;" placeholder="Subscribe With Email For Product Updates" aria-label="" aria-describedby="basic-addon1">
+        </center>
     </div>
 </div>
-<div class="about-gig-buddy-container" id="gig-container">
-    <h2 class="about-gig-buddy-header">About Gig Buddy</h2>
-    <p class="about-gig-buddy">Gig Buddy was created by Freelancers for Freelancers and hopes to keep developing useful but simple features to help optimize your time and increase your success. Currently Gig Buddy is a lightweight, easy to use dashboard for the gig economy that allows users to easily track information about:</p>
-    <div class="image-with-desc-container">
-        <img src="../assets/clientOverView.png" class="client-overview-image left-image" alt="Screenshot of client over view section">
-        <div class="texts-for-image">
-        <h3 class="client-overview-header cli-head">Clients</h3>
-        <p class="client-overview-text">Get quick and effective insights about clients in the client overview section of the dashboard. The clients overview section makes it easy to view what services you provide for each client.</p>
-        </div>
-    </div>
-    <div class="image-with-desc-container">
-        <div class="texts-for-image">
-        <h3 class="client-overview-header">Services</h3>
-        <p class="client-overview-text">Easily track and manage your service list in the services section of the dashboard. Store useful information about services such as pricing and occurence. Once services are setup you can simply go into one of your clients and add your services. </p>
-        </div>
-        <img src="../assets/add-services-screenshot.png" class="client-overview-image right-image" alt="Screenshot from website">
-    </div>
-    <div class="image-with-desc-container">
-        <img src="../assets/bill-clients.png" class="client-overview-image left-image" alt="Screenshot of client over view section">
-        <div class="texts-for-image">
-        <h3 class="client-overview-header">Payments</h3>
-        <p class="client-overview-text">Make asking for money easier with our one click payment request feature. With one click on your Gig Buddy dashboard you can easily send clients calculated payment requests via email. All payments are tracked so you can easily review billing history and track your progress in the payments section of the dashboard.</p>
-        </div>
-    </div>
-</div>
-<footer class="footer-section">
-    <p class="footer-text">©2019 GIG BUDDY, INC. ALL RIGHTS RESERVED.</p>
-    <p class="footer-text">< / built by: Connor Cahill ></p>
-</footer>
-
-
-
