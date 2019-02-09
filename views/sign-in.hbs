@@ -1,18 +1,21 @@
-<div class="auth-form-header-container">
-    <h1 class="form-header">Welcome Back!</h1>
-    <small class="form-header-byline">Gig Buddy has missed you. Sign in to get back to work!</small>
+<div class="row d-flex flex-row justify-content-center">
+    <div class="col-8">
+        <h2 class="display-2">Welcome Back!</h2>
+        <small class="lead">Sign in and lets get back to work!</small>
+        <form action="/sign-in" method="POST">
+            <div class="form-group">
+                <label for="exampleInputEmail1" class="bmd-label-floating">Email</label>
+                <input type="email" name="email" placeholder="ElonMusk@gmail.com" class="form-control" id="exampleInputEmail1">
+                <span class="bmd-help">We'll never share your email with anyone else.</span>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1" class="bmd-label-floating">Password</label>
+                <input type="password" name="password" class="form-control" placeholder="NotPassword" id="exampleInputPassword1">
+            </div>
+            <div class="d-flex flex-row justify-content-end">
+                <a class="btn btn-default" href="/">Cancel</a>
+                <button type="submit" class="btn btn-success btn-raised">Submit</button>
+            </div>
+        </form>
+    </div> 
 </div>
-<form action="/sign-in" method="post" class="auth-form sign-in">
-    <span>
-        <label for="email">Email: </label>
-        <input type="text" name="email" class="form-input sign-in-inp">
-    </span>
-    <span>
-        <label for="password">Password</label>
-        <input type="password" name="password" placeholder="password123" class="form-input sign-in-inp">
-    </span>
-    <div class="sign-in-btn-container">
-        <button type="submit" class="sign-in-btn">Sign In</button>
-        <small class="no-account">Don't have an account? <a href="/sign-up" class="no-account-link">Click here</a></small>
-    </div>
-</form>
