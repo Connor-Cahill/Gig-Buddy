@@ -31,7 +31,7 @@ app.engine('hbs', exphbs({
 app.set('view engine', 'hbs');
 
 // Database Connections
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/gig-buddy', { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
 mongoose.connection.on('error', console.error.bind(console, 'MongoDB connection error'));
 mongoose.Promise = global.Promise;
 
