@@ -50,6 +50,7 @@ module.exports = function(app) {
         const payment = new Payment(req.body);
         const clientId = req.params.clientId;
         const service = await Service.findById(payment.service).exec();
+
         //  setting Payment properties. Amount set equal to cost of service
         payment.client = clientId;
         payment.amount = service.pricing;
@@ -85,7 +86,7 @@ module.exports = function(app) {
         client.payments.pop(client.payments.indexOf(paymentId));
         await client.save();
 
-        //  finally ... remove the payment 
+        //  remove the payment from db
         await Payment.findOneAndRemove({ _id: paymentId }).exec();
         return res.redirect(`/clients/${ clientId }`);
     }));
@@ -108,17 +109,19 @@ module.exports = function(app) {
         const client = await Client.findById(payment.client).exec();
         client.openPayments.pop(client.openPayments.indexOf(payment._id));
         client.closedPayments.unshift(payment._id);
+
         //  Also adds value of payment to Total Paid 
         client.totalPaid += payment.amount;
         await client.save();
+
         // find User so can can delete from openBills and add to paidBills
         const user = await User.findById(req.user._id);
         user.openBills.pop(user.openBills.indexOf(payment._id));
         user.paidBills.unshift(payment._id);
+
         //  Also adds value of payment to users total Earned
         user.totalEarned += payment.amount;
         await user.save();
-
         return res.sendStatus(200);
     }));
 }
