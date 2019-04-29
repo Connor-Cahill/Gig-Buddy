@@ -36,14 +36,7 @@ mongoose.connection.on('error', console.error.bind(console, 'MongoDB connection 
 mongoose.Promise = global.Promise;
 
 //  Setup Controllers 
-require('./controllers/index')(app);
-require('./controllers/clients')(app);
-require('./controllers/services')(app);
-require('./controllers/auth')(app);
-require('./controllers/payments')(app);
-require('./controllers/subscribers')(app);
-require('./controllers/users')(app);
-
+app.use('/', require('./server/index.routes'));
 
 //  App running locally on localhost:3000
 app.listen(process.env.PORT || 3000, () => {
