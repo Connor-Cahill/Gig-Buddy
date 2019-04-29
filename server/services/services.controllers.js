@@ -6,54 +6,71 @@ const headerData = require('../middleware/calcHeaderStats');
 const userAuth = require('../middleware/userAuth');
 
 
-module.exports = function(app) {
-    //GET: renders list of all user's Services
-    app.get('/services', userAuth, sendCli, headerData, wrap(async (req, res) => {
-        //below vars are necessary for sending the data displayed in header
-        const totalServices = req.totalServices;
-        const monthlyServices = req.monthlyServices;
-        const oneTimeServices = req.oneTimeServices;
-        const totalClients = req.totalClients
-        const clients = req.clientList;
-        const totalEarned = req.totalEarned;
-        //  setting req.serviceIndex for styling purposes
-        req.serviceIndex = true;
+// TODO: send userAuth sendCli and headerData as middleware
+/**
+ * Index returns list of all services
+ * and renders service index on dashboard
+ */
+const Index = async (req, res) => {
+    //below vars are necessary for sending the data displayed in header
+    const totalServices = req.totalServices;
+    const monthlyServices = req.monthlyServices;
+    const oneTimeServices = req.oneTimeServices;
+    const totalClients = req.totalClients
+    const clients = req.clientList;
+    const totalEarned = req.totalEarned;
+    //  setting req.serviceIndex for styling purposes
+    req.serviceIndex = true;
 
-        const user = await User.findOne({ _id: req.user._id }).populate('services').exec();
-        const services = user.services;
-        res.render('services-index', { services, totalEarned, clients, totalServices, totalClients, monthlyServices, oneTimeServices, serviceIndex: req.serviceIndex, user: req.user });
-    }));
+    const user = await User.findOne({ _id: req.user._id }).populate('services').exec();
+    return res.render('services-index', { services: user.services, totalEarned, clients, totalServices, totalClients, monthlyServices, oneTimeServices, serviceIndex: req.serviceIndex, user: req.user });
+}
 
-    //POST: creates a new Service LATER: will append to user:
-    app.post('/services', userAuth, wrap(async (req, res) => {
-        //  creates new service
-        const service = new Service(req.body);
-        await service.save();
-        //  gives new service to the user 
-        const user = await User.findOne({ _id: req.user._id }).exec();
-        user.services.unshift(service._id);
-        await user.save();
+// TODO: ass userAuth as middleware
+/**
+ * Create makes a new service and save
+ * is to the users services list
+ */
+const Create = async (req, res) => {
+    const service = new Service(req.body);
+    await service.save();
+    // gives new service to user
+    const user = await User.findById(req.user._id).exec();
+    user.services.unshift(service._id);
+    await user.save();
+    return res.redirect('/services');
+}
 
-        res.redirect('/services');
-    }));
 
-    //DELETE: remove & deletes specific Service given Id
-    app.delete('/services/:id', userAuth, wrap(async (req, res) => {
-        await Service.findOneAndRemove({ _id: req.params.id }).exec();
-        const user = await User.findOne({ _id: req.user._id }).exec();
-       //   removes the service from the user.services array 
-        user.services.pop(user.services.indexOf(req.params.id));
-        res.redirect('/services');
-    }));
+// TODO: pass userAuth as middleware
+/**
+ * Delete removes a services and
+ * removes it from the users user.services arr
+ */
+const Delete = async (req, res) => {
+    await Service.findOneAndRemove({ _id: req.params.id }).exec();
+    const user = await User.findById(req.user._id).exec();
+    // removes service from user.services array
+    user.services.pop(user.services.indexOf(req.params.id));
+    await user.save();
+    return res.redirect('/services');
+}
 
-    //put: updates service details
-    app.put('/services/:id', userAuth, wrap(async (req, res) => {
-        const service = await Service.findOne({ _id: req.params.id }).exec();
-        service.set(req.body);
-        await service.save();
-        res.redirect('/services');
-    }));
-
+// TODO: pass userAuth as middleware
+/**
+ * Update updates the info for a service
+ */
+const Update = async (req, res) => {
+    const service = await Service.findById(req.params.id).exec();
+    // set new info
+    service.set(req.body);
+    await service.save();
+    return res.redirect(req.body);
+}
     
-
+module.exports = {
+    Index,
+    Create,
+    Delete,
+    Update,
 }
