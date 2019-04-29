@@ -19,3 +19,4 @@ router.get('/sign-up', controller.GetSignUp);
 // GET: renders the sign in page
 router.get('/sign-in', controller.GetSignIn);
 
+module.exports = router;
