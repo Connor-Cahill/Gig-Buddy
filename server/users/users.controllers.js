@@ -55,7 +55,6 @@ const Delete = async (req, res) => {
 module.exports = {
     Index,
     Get,
-    Create,
     Update,
     Delete,
 }
