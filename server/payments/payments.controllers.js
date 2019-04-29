@@ -55,7 +55,6 @@ const Index = async (req, res) => {
 
 }
 
-// TODO: add userAuth as middleware for /:id/payments
 /**
  * Create adds a new payment to the data base and saves it to
  * the relevant user and client also adds what services payment is for
@@ -90,7 +89,6 @@ const Create = async (req, res) => {
 }
 
 
-// TODO: add userAuth as middleware for /:id/clients/:clientId
 // TODO: I changes route link fix in frontend
 /**
  * Delete removes a payment from client and database
