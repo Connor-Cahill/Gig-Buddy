@@ -1,12 +1,7 @@
-const Service = require('../models/service');
-const User = require('../models/user');
-const wrap = require('../middleware/errorHandler');
-const sendCli = require('../middleware/sendClientsList');
-const headerData = require('../middleware/calcHeaderStats');
-const userAuth = require('../middleware/userAuth');
+const Service = require('./service.model');
+const User = require('../user/users.model');
 
 
-// TODO: send userAuth sendCli and headerData as middleware
 /**
  * Index returns list of all services
  * and renders service index on dashboard
@@ -26,7 +21,6 @@ const Index = async (req, res) => {
     return res.render('services-index', { services: user.services, totalEarned, clients, totalServices, totalClients, monthlyServices, oneTimeServices, serviceIndex: req.serviceIndex, user: req.user });
 }
 
-// TODO: ass userAuth as middleware
 /**
  * Create makes a new service and save
  * is to the users services list
@@ -42,7 +36,6 @@ const Create = async (req, res) => {
 }
 
 
-// TODO: pass userAuth as middleware
 /**
  * Delete removes a services and
  * removes it from the users user.services arr
@@ -56,7 +49,6 @@ const Delete = async (req, res) => {
     return res.redirect('/services');
 }
 
-// TODO: pass userAuth as middleware
 /**
  * Update updates the info for a service
  */
