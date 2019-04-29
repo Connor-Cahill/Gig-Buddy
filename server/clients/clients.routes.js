@@ -34,3 +34,5 @@ router.patch('/:id/service/:serviceId', userAuth, wrap(controller.RemoveService)
 // POST: sends invoice email to client from user
 // commented right now b/c dont want to send lots of emails while testing
 // router.post('/:id/email', userAuth, wrap(controller.SendMail));
+
+module.exports = router;
