@@ -1,10 +1,7 @@
-const Client = require('./clients.model');
+const Client = require('./client.model');
 const Service = require('../services/services.model');
-const User = require('./users/users.model');
-const headerData = require('../middleware/calcHeaderStats');
-const sendCli = require('../middleware/sendClientsList');
-const userAuth = require('../middleware/userAuth');
-const emailer = require('../services/sendgrid-emailer');
+const User = require('../users/users.model');
+const emailer = require('../../services/sendgrid-emailer');
 
 
 /**

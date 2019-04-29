@@ -1,8 +1,9 @@
 const express = require('express');
-const wrap = require('../middleware/errorHandler');
-const headerData = require('../middleware/calcHeaderStats');
-const sendCli = require('../middleware/sendClientsList');
-const userAuth = require('../middleware/userAuth');
+const wrap = require('../../middleware/errorHandler');
+const headerData = require('../../middleware/calcHeaderStats');
+const sendCli = require('../../middleware/sendClientsList');
+const controller = require('./payments.controllers');
+const userAuth = require('../../middleware/userAuth');
 
 const router = express.Router();
 

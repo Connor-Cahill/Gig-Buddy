@@ -1,4 +1,4 @@
-const User = require('../models/user');
+const User = require('./users/users.model');
 
 module.exports = function(app) {
     //  GET: renders the landing page 

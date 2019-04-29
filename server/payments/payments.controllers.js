@@ -1,12 +1,8 @@
 const Payment = require('./payments.model');
 const Service = require('../services/services.model');
-const Client = require('../clients/clients.model');
+const Client = require('../clients/client.model');
 const User = require('../users/users.model');
-const wrap = require('../middleware/errorHandler');
-const headerData = require('../middleware/calcHeaderStats');
-const sendCli = require('../middleware/sendClientsList');
-const userAuth = require('../middleware/userAuth');
-const emailer = require('../services/sendgrid-emailer');
+const emailer = require('../../services/sendgrid-emailer');
 
 
 /**
@@ -89,7 +85,6 @@ const Create = async (req, res) => {
 }
 
 
-// TODO: I changes route link fix in frontend
 /**
  * Delete removes a payment from client and database
  */
@@ -105,16 +100,6 @@ const Delete = async (req, res) => {
     return res.redirect(`/clients/${client._id}`);
 }
 
-    //  put: updates a payment
-    app.put('/payments/:id', userAuth, wrap(async (req, res) => {
-        const payment = await Payment.findById(req.params.id).exec();
-
-        payment.set(req.body);
-        await payment.save();
-        return res.redirect('/payments');
-    }));
-
-// TODO: pass userAuth as middleware to /:id/payments
 /**
  * Update updates information about a specific payment
  * object
@@ -127,7 +112,6 @@ const Update = async (req, res) => {
     return res.redirect('/payments');
 }
 
-// TODO: add userAuth as middleware to /:id
 /**
  * ClosePayment changes a payment from open to closed meaning
  * the client paid the bill. 

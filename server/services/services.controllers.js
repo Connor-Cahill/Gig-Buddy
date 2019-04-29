@@ -1,5 +1,5 @@
-const Service = require('./service.model');
-const User = require('../user/users.model');
+const Service = require('./services.model');
+const User = require('../users/users.model');
 
 
 /**

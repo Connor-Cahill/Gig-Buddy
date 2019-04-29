@@ -1,7 +1,6 @@
 const User = require('./users.model');
 
 
-//TODO: pass userAuth as middleware
 /**
  * Index returns array of json user objects
  */
@@ -10,7 +9,6 @@ const Index = async (req, res) => {
     return res.send(users);
 }
 
-// TODO: pass userAuth
 /**
  * Get renders profile for specific users
  */
@@ -23,7 +21,6 @@ const Get = async (req, res) => {
     return res.render('user-profile', { user });
 }
 
-// TODO: pass userAuth as middleware
 /**
  * Update changes and saves new info to user
  */
@@ -35,14 +32,7 @@ const Update = async (req, res) => {
     return res.sendStatus(200);
 }
 
-    //  DELETE: deletes a user from the database
-    app.delete('/users/:id', userAuth, wrap(async (req, res) => {
-        await User.findOneAndRemove({ _id: req.params.id }).exec();
-        //  Don't know if this will render anything so it just returns 200
-        return res.sendStatus(200);
-    }));
 
-// TODO: pass userAuth middleware
 /**
  * Delete removes a user from the database
  */

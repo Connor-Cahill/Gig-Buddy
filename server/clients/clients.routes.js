@@ -1,7 +1,7 @@
 const express = require('express');
 const headerData = require('../../middleware/calcHeaderStats');
 const sendCli = require('../../middleware/sendClientsList');
-const controller = require('./client.controllers');
+const controller = require('./clients.controllers');
 const userAuth = require('../../middleware/userAuth');
 const wrap = require('../../middleware/errorHandler');
 
@@ -23,7 +23,7 @@ router.post('/', userAuth, wrap(controller.Create));
 router.patch('/:id', userAuth, wrap(controller.Update));
 
 // DELETE: removes a client from db and user client list
-router.delte('/:id', userAuth, wrap(controller.Delete));
+router.delete('/:id', userAuth, wrap(controller.Delete));
 
 // PATCH: adds a service to a client
 router.patch('/:id/addService', userAuth, wrap(controller.AddService));

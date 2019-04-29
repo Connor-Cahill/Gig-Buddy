@@ -1,7 +1,7 @@
 const wrap = require('./errorHandler');
-const Client = require('../models/client');
-const User = require('../models/user');
-const Service = require('../models/service');
+const Client = require('../server/clients/client.model');
+const User = require('../server/users/users.model');
+const Service = require('../server/services/services.model');
 
 
 /*
